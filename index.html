@@ -1,20 +1,389 @@
-import React, { useState, useEffect } from 'react';
-import { Copy, Check, Sparkles, Zap, Chrome, ChevronDown } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CopyCleaner - Clean Messy Text from PDFs, Emails & AI Tools Instantly</title>
+    <meta name="description" content="Remove extra spaces, fix line breaks, and clean messy text from PDFs, emails, ChatGPT, and websites in one click. Free online text formatting tool.">
+    <meta name="keywords" content="remove text formatting, clean copied text, fix pdf text, text cleaner, format text, remove spaces, fix line breaks">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="CopyCleaner - The TinyPNG of Text Formatting">
+    <meta property="og:description" content="Clean messy text from PDFs, emails, AI tools, and websites in one click.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://copycleaner.co">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-in {
+            animation: slideDown 0.3s ease-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+    
+    <!-- Header -->
+    <header class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                    C
+                </div>
+                <h1 class="text-2xl font-bold text-gray-900">CopyCleaner.co</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#features" class="hidden md:block text-gray-600 hover:text-gray-900 font-medium cursor-pointer">Features</a>
+                <a href="#how-it-works" class="hidden md:block text-gray-600 hover:text-gray-900 font-medium cursor-pointer">How It Works</a>
+                <button onclick="showUpgradeModal()" class="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors font-medium">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <span class="hidden sm:inline">Get Extension</span>
+                </button>
+            </div>
+        </div>
+    </header>
 
-export default function CopyCleanerApp() {
-  const [inputText, setInputText] = useState('');
-  const [outputText, setOutputText] = useState('');
-  const [copied, setCopied] = useState(false);
-  const [stats, setStats] = useState({ spaces: 0, breaks: 0, chars: 0 });
-  const [dailyUses, setDailyUses] = useState(0);
-  const [showUpgrade, setShowUpgrade] = useState(false);
-  const [showDemo, setShowDemo] = useState(true);
-  const [openFaq, setOpenFaq] = useState(null);
-  
-  const MAX_DAILY_USES = 3;
-  const MAX_CHARS = 5000;
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                The TinyPNG of Text Formatting
+            </h2>
+            <p class="text-xl md:text-2xl mb-8 opacity-95 max-w-3xl mx-auto">
+                Clean messy text from PDFs, emails, AI tools, and websites in one click. Remove extra spaces, fix line breaks, and make your text look professional instantly.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button onclick="scrollToApp()" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 flex items-center gap-2">
+                    Try Free Now
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <button onclick="showUpgradeModal()" class="bg-indigo-800 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-indigo-900 transition-all border-2 border-white/30">
+                    Get Chrome Extension
+                </button>
+            </div>
+            <p class="mt-6 text-sm opacity-80">
+                ✓ No signup required • ✓ Privacy-first • ✓ Works offline
+            </p>
+        </div>
+    </section>
 
-  const demoText = `This    is   badly
+    <!-- Main Tool Section -->
+    <section id="app-tool" class="py-12 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-8">
+                <h3 class="text-3xl font-bold text-gray-900 mb-3">Try It Now - Paste Your Messy Text</h3>
+                <div class="flex gap-3 justify-center flex-wrap">
+                    <button onclick="loadDemo()" class="text-indigo-600 hover:text-indigo-700 font-semibold text-sm underline">
+                        📄 Load Short Demo
+                    </button>
+                    <button onclick="loadLargeDemo()" class="text-purple-600 hover:text-purple-700 font-semibold text-sm underline">
+                        📚 Load Large Demo (Real PDF Example)
+                    </button>
+                    <button id="resetBtn" onclick="resetDailyLimit()" class="text-green-600 hover:text-green-700 font-semibold text-sm underline hidden">
+                        🔄 Reset Daily Limit (Testing)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Usage Counter -->
+            <div id="usageCounter" class="text-center mb-6">
+                <p class="text-sm text-gray-500">
+                    Free uses today: <span id="usesLeft" class="font-semibold text-indigo-600">3 of 3 remaining</span>
+                </p>
+            </div>
+            <div id="limitReached" class="text-center mb-6 bg-red-50 border border-red-200 rounded-lg p-3 max-w-md mx-auto hidden">
+                <p class="text-sm text-red-600 font-semibold">
+                    ⚠️ Daily limit reached. Get the extension for unlimited cleans!
+                </p>
+            </div>
+
+            <!-- Tool Interface -->
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white rounded-xl shadow-lg border-2 border-gray-200 p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <label class="text-sm font-semibold text-gray-700 flex items-center gap-2">
+                            <span class="text-red-500">📄</span> MESSY TEXT
+                        </label>
+                        <span id="charCount" class="text-xs text-gray-500">0/5,000</span>
+                    </div>
+                    <textarea
+                        id="inputText"
+                        placeholder="Paste your messy text here...
+
+Try copying text from a PDF or email!"
+                        class="w-full h-64 p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none font-mono text-sm"
+                    ></textarea>
+                    <button
+                        id="cleanBtn"
+                        onclick="handleClean()"
+                        class="w-full mt-4 bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all font-bold flex items-center justify-center gap-2 text-lg transform hover:scale-105"
+                    >
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        Clean My Text ✨
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg border-2 border-gray-200 p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <label class="text-sm font-semibold text-gray-700 flex items-center gap-2">
+                            <span class="text-green-500">✨</span> CLEAN TEXT
+                        </label>
+                        <button
+                            id="copyBtn"
+                            onclick="handleCopy()"
+                            class="text-sm bg-indigo-600 text-white px-3 py-1.5 rounded hover:bg-indigo-700 flex items-center gap-1 font-medium hidden"
+                        >
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            Copy
+                        </button>
+                    </div>
+                    <div id="outputText" class="w-full h-64 p-4 border-2 border-dashed border-gray-300 rounded-lg bg-gradient-to-br from-green-50 to-blue-50 overflow-auto font-mono text-sm whitespace-pre-wrap">
+                        <div class="text-gray-400 text-center mt-20">
+                            <p class="mb-2">👆 Click "Clean My Text" to see the magic!</p>
+                            <p class="text-xs">Watch messy text transform instantly</p>
+                        </div>
+                    </div>
+                    
+                    <div id="statsBox" class="mt-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-4 border border-indigo-200 hidden">
+                        <p class="text-sm font-semibold text-gray-700 mb-2">✅ Cleaning Results:</p>
+                        <div class="grid grid-cols-3 gap-2 text-center">
+                            <div class="bg-white rounded-lg p-2 border border-indigo-100">
+                                <p id="statSpaces" class="text-2xl font-bold text-indigo-600">0</p>
+                                <p class="text-xs text-gray-600">spaces</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-2 border border-purple-100">
+                                <p id="statBreaks" class="text-2xl font-bold text-purple-600">0</p>
+                                <p class="text-xs text-gray-600">breaks</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-2 border border-pink-100">
+                                <p id="statChars" class="text-2xl font-bold text-pink-600">0</p>
+                                <p class="text-xs text-gray-600">cleaned</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Before/After Example -->
+            <div class="bg-white rounded-xl shadow-lg border-2 border-indigo-200 p-8">
+                <h4 class="text-2xl font-bold text-gray-900 mb-6 text-center">Why CopyCleaner > Cmd+Shift+V</h4>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-2xl">❌</span>
+                            <p class="text-sm font-bold text-red-600">Cmd+Shift+V doesn't fix this</p>
+                        </div>
+                        <div class="bg-red-50 border-2 border-red-300 rounded-lg p-4 font-mono text-sm">
+                            <span class="text-red-700">This    is   badly<br>spaced    text from<br>a    PDF   document</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-2xl">✅</span>
+                            <p class="text-sm font-bold text-green-600">CopyCleaner fixes it perfectly</p>
+                        </div>
+                        <div class="bg-green-50 border-2 border-green-300 rounded-lg p-4 font-mono text-sm">
+                            <span class="text-green-700">This is badly spaced text from a PDF document</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center mb-12 text-gray-900">What CopyCleaner Fixes</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md border-2 border-indigo-200">
+                    <div class="text-4xl mb-4">🤖</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">AI Text Formatting</h4>
+                    <p class="text-gray-600">Cleans messy output from ChatGPT, Claude, Jasper, and other AI tools. Makes AI text look human and professional.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-4xl mb-4">📄</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">PDF Text Problems</h4>
+                    <p class="text-gray-600">Fixes broken line breaks, weird spacing, and formatting issues when copying from PDFs.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-4xl mb-4">📧</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">Email Formatting</h4>
+                    <p class="text-gray-600">Removes reply chains, signatures, and messy formatting from forwarded emails.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-4xl mb-4">🌐</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">Web Content</h4>
+                    <p class="text-gray-600">Cleans text copied from websites, removing extra HTML formatting and spaces.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-4xl mb-4">💬</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">Smart Quotes</h4>
+                    <p class="text-gray-600">Converts curly quotes and apostrophes to regular ones for consistent formatting.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">Extra Spaces & Breaks</h4>
+                    <p class="text-gray-600">Removes multiple spaces, tabs, invisible characters, and awkward line breaks instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h3 class="text-4xl font-bold mb-12 text-gray-900">How It Works</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">Paste Text</h4>
+                    <p class="text-gray-600">Copy messy text from anywhere and paste it into CopyCleaner</p>
+                </div>
+                <div>
+                    <div class="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">Click Clean</h4>
+                    <p class="text-gray-600">Our tool instantly analyzes and fixes all formatting issues</p>
+                </div>
+                <div>
+                    <div class="w-16 h-16 bg-pink-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">Copy Result</h4>
+                    <p class="text-gray-600">Get perfectly formatted text ready to use anywhere</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center mb-12 text-gray-900">Frequently Asked Questions</h3>
+            <div class="space-y-4" id="faqSection"></div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h3 class="text-4xl font-bold mb-6">Ready for Unlimited Cleaning?</h3>
+            <p class="text-xl mb-8 opacity-95">
+                Get the browser extension for unlimited cleans, paste history, and keyboard shortcuts
+            </p>
+            <button onclick="showUpgradeModal()" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all inline-flex items-center gap-2">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                Install Chrome Extension - $4.99/mo
+            </button>
+            <p class="mt-4 text-sm opacity-75">Also available for Firefox • 7-day money-back guarantee</p>
+        </div>
+    </section>
+
+    <!-- Upgrade Modal -->
+    <div id="upgradeModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative">
+            <button onclick="hideUpgradeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">
+                ✕
+            </button>
+            
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="text-white w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-gray-900 mb-3">
+                    Unlock Unlimited Cleaning
+                </h3>
+                
+                <p class="text-gray-600 mb-6">
+                    Install our browser extension for unlimited text cleaning, right-click context menu, and paste history.
+                </p>
+
+                <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-lg p-4 mb-6 text-left border border-indigo-200">
+                    <p class="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                        Premium Features:
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 font-bold">✓</span>
+                            <span><strong>Unlimited</strong> cleans per day</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 font-bold">✓</span>
+                            <span><strong>No character limit</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 font-bold">✓</span>
+                            <span><strong>Right-click</strong> to clean any text</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 font-bold">✓</span>
+                            <span><strong>Keyboard shortcut</strong> (Cmd+Opt+V)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 font-bold">✓</span>
+                            <span><strong>Paste history</strong> (last 50 cleans)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 font-bold">✓</span>
+                            <span><strong>Works offline</strong></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <button class="w-full bg-indigo-600 text-white py-3 rounded-lg font-bold hover:bg-indigo-700 transition-colors text-lg">
+                        Install for Chrome ($4.99/mo)
+                    </button>
+                    <button class="w-full bg-gray-600 text-white py-3 rounded-lg font-bold hover:bg-gray-700 transition-colors">
+                        Install for Firefox ($4.99/mo)
+                    </button>
+                </div>
+
+                <p class="text-xs text-gray-500 mt-4">
+                    Or get yearly for $39 (save 34%) • 7-day money-back guarantee
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t bg-white py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center text-gray-600 text-sm">
+            <p class="mb-4">© 2025 CopyCleaner.co • Your text never leaves your browser • Built with privacy in mind</p>
+            <div class="flex justify-center gap-6 flex-wrap">
+                <a href="/blog" class="hover:text-gray-900">Blog</a>
+                <a href="/privacy" class="hover:text-gray-900">Privacy Policy</a>
+                <a href="/terms" class="hover:text-gray-900">Terms of Service</a>
+                <a href="/refund" class="hover:text-gray-900">Refund Policy</a>
+                <a href="mailto:hello@copycleaner.co" class="hover:text-gray-900">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // State management
+        let state = {
+            inputText: '',
+            outputText: '',
+            dailyUses: 0,
+            stats: { spaces: 0, breaks: 0, chars: 0 }
+        };
+
+        const MAX_DAILY_USES = 3;
+        const MAX_CHARS = 5000;
+
+        const demoText = `This    is   badly
 spaced    text that
 was    copied from
 a    PDF   document.
@@ -24,108 +393,7 @@ broken   line   breaks,
 and "smart quotes" that
 need    to   be    fixed.`;
 
-  useEffect(() => {
-    const stored = getDailyUses();
-    setDailyUses(stored);
-  }, []);
-
-  const getDailyUses = () => {
-    const today = new Date().toDateString();
-    const stored = window.sessionStorage?.getItem('copycleaner_data');
-    if (stored) {
-      try {
-        const data = JSON.parse(stored);
-        if (data.date === today) return data.uses;
-      } catch (e) {}
-    }
-    return 0;
-  };
-
-  const saveDailyUses = (uses) => {
-    const today = new Date().toDateString();
-    try {
-      window.sessionStorage?.setItem('copycleaner_data', JSON.stringify({ date: today, uses }));
-    } catch (e) {}
-  };
-
-  const cleanText = (text) => {
-    let cleaned = text;
-    let spacesRemoved = 0;
-    let breaksFixed = 0;
-    let charsRemoved = 0;
-    let originalLength = text.length;
-
-    const spacesBefore = (cleaned.match(/  +/g) || []).join('').length;
-    cleaned = cleaned.replace(/[ \t]+/g, ' ');
-    spacesRemoved = spacesBefore;
-
-    const beforeBreaks = cleaned;
-    cleaned = cleaned.replace(/([a-z,])\n([a-z])/g, '$1 $2');
-    breaksFixed = (beforeBreaks.match(/([a-z,])\n([a-z])/g) || []).length;
-
-    cleaned = cleaned.replace(/[\u200B-\u200D\uFEFF]/g, '');
-    cleaned = cleaned.replace(/['']/g, "'");
-    cleaned = cleaned.replace(/[""]/g, '"');
-    cleaned = cleaned.replace(/\n{3,}/g, '\n\n');
-    cleaned = cleaned.trim();
-
-    charsRemoved = originalLength - cleaned.length;
-
-    return {
-      cleaned,
-      stats: {
-        spaces: spacesRemoved,
-        breaks: breaksFixed,
-        chars: charsRemoved
-      }
-    };
-  };
-
-  const handleClean = () => {
-    if (dailyUses >= MAX_DAILY_USES) {
-      setShowUpgrade(true);
-      return;
-    }
-
-    if (!inputText.trim()) {
-      alert('Please paste some text first!');
-      return;
-    }
-
-    if (inputText.length > MAX_CHARS) {
-      alert(`Free tier limited to ${MAX_CHARS.toLocaleString()} characters. Upgrade for unlimited!`);
-      return;
-    }
-
-    const result = cleanText(inputText);
-    setOutputText(result.cleaned);
-    setStats(result.stats);
-    setShowDemo(false);
-    
-    const newUses = dailyUses + 1;
-    setDailyUses(newUses);
-    saveDailyUses(newUses);
-
-    if (newUses >= MAX_DAILY_USES) {
-      setTimeout(() => setShowUpgrade(true), 1000);
-    }
-  };
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(outputText);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const loadDemo = () => {
-    setInputText(demoText);
-    setShowDemo(true);
-    setOutputText('');
-    setStats({ spaces: 0, breaks: 0, chars: 0 });
-  };
-
-  const loadLargeDemo = () => {
-    const largeMessyText = `CHAPTER    1:   THE   BEGINNING
+        const largeMessyText = `CHAPTER    1:   THE   BEGINNING
 
 This    is    an   example   of
 text   that   was   copied   from
@@ -144,530 +412,248 @@ understand    the    content.
 "Smart   quotes"   and   'apostrophes'
 also   need   to   be   converted   to
 regular   quotes   so   they   work
-properly    in    most    systems.
+properly    in    most    systems.`;
 
-SECTION   2:   MORE   EXAMPLES
+        // Initialize
+        function init() {
+            state.dailyUses = getDailyUses();
+            updateUI();
+            setupEventListeners();
+            renderFAQs();
+        }
 
-When    you    copy    text    from
-emails,    you    often    get    reply
-chains    and    weird    formatting
-like    this:    
+        function setupEventListeners() {
+            document.getElementById('inputText').addEventListener('input', function(e) {
+                state.inputText = e.target.value;
+                updateCharCount();
+            });
+        }
 
->    This    is    a    quoted    reply
->    with    extra    symbols    and
->    broken    formatting    too
+        function getDailyUses() {
+            const today = new Date().toDateString();
+            const stored = localStorage.getItem('copycleaner_data');
+            if (stored) {
+                try {
+                    const data = JSON.parse(stored);
+                    if (data.date === today) return data.uses;
+                } catch (e) {}
+            }
+            return 0;
+        }
 
-Multiple       spaces       between
-words       and       invisible
-characters​​​   that   you   can't
-even    see    but    mess    up
-your    formatting    completely.
+        function saveDailyUses(uses) {
+            const today = new Date().toDateString();
+            localStorage.setItem('copycleaner_data', JSON.stringify({ date: today, uses }));
+        }
 
-Line   breaks
-happen
-randomly
-in
-the
-middle
-of
-sentences
-making
-it
-impossible
-to
-read.
+        function cleanText(text) {
+            let cleaned = text;
+            let spacesRemoved = 0;
+            let breaksFixed = 0;
+            let originalLength = text.length;
 
-CONCLUSION:   ALL   THESE   PROBLEMS
+            const spacesBefore = (cleaned.match(/  +/g) || []).join('').length;
+            cleaned = cleaned.replace(/[ \t]+/g, ' ');
+            spacesRemoved = spacesBefore;
 
-This    demonstration    shows    all
-the    common    problems    that
-CopyCleaner    can    fix    in    one
-click:    extra    spaces,    broken
-line    breaks,    smart    quotes,
-and    messy    formatting    from
-PDFs,    emails,    and    websites.
+            const beforeBreaks = cleaned;
+            cleaned = cleaned.replace(/([a-z,])\n([a-z])/g, '$1 $2');
+            breaksFixed = (beforeBreaks.match(/([a-z,])\n([a-z])/g) || []).length;
 
-Try    cleaning    this    text    and
-see    how    much    better    it
-looks    in    just    one    second!`;
-    
-    setInputText(largeMessyText);
-    setShowDemo(true);
-    setOutputText('');
-    setStats({ spaces: 0, breaks: 0, chars: 0 });
-  };
+            cleaned = cleaned.replace(/[\u200B-\u200D\uFEFF]/g, '');
+            cleaned = cleaned.replace(/['']/g, "'");
+            cleaned = cleaned.replace(/[""]/g, '"');
+            cleaned = cleaned.replace(/\n{3,}/g, '\n\n');
+            cleaned = cleaned.trim();
 
-  const resetDailyLimit = () => {
-    setDailyUses(0);
-    saveDailyUses(0);
-    alert('Daily limit reset! You have 3 fresh uses.');
-  };
+            const charsRemoved = originalLength - cleaned.length;
 
-  const scrollToApp = () => {
-    document.getElementById('app-tool').scrollIntoView({ behavior: 'smooth' });
-  };
+            return {
+                cleaned,
+                stats: { spaces: spacesRemoved, breaks: breaksFixed, chars: charsRemoved }
+            };
+        }
 
-  const toggleFaq = (index) => {
-    setOpenFaq(openFaq === index ? null : index);
-  };
+        function handleClean() {
+            if (state.dailyUses >= MAX_DAILY_USES) {
+                showUpgradeModal();
+                return;
+            }
 
-  const usesLeft = Math.max(0, MAX_DAILY_USES - dailyUses);
+            if (!state.inputText.trim()) {
+                alert('Please paste some text first!');
+                return;
+            }
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-      {/* SEO Meta tags would go in actual HTML head */}
-      
-      {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-              C
-            </div>
-            <h1 className="text-2xl font-bold text-gray-900">CopyCleaner.co</h1>
-          </div>
-          <div className="flex items-center gap-4">
-            <a href="#features" onClick={(e) => { e.preventDefault(); document.getElementById('features').scrollIntoView({ behavior: 'smooth' }); }} className="hidden md:block text-gray-600 hover:text-gray-900 font-medium cursor-pointer">Features</a>
-            <a href="#how-it-works" onClick={(e) => { e.preventDefault(); document.getElementById('how-it-works').scrollIntoView({ behavior: 'smooth' }); }} className="hidden md:block text-gray-600 hover:text-gray-900 font-medium cursor-pointer">How It Works</a>
-            <button 
-              onClick={() => setShowUpgrade(true)}
-              className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors font-medium"
-            >
-              <Chrome size={18} />
-              <span className="hidden sm:inline">Get Extension</span>
-            </button>
-          </div>
-        </div>
-      </header>
+            if (state.inputText.length > MAX_CHARS) {
+                alert(`Free tier limited to ${MAX_CHARS.toLocaleString()} characters. Upgrade for unlimited!`);
+                return;
+            }
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-            The TinyPNG of Text Formatting
-          </h2>
-          <p className="text-xl md:text-2xl mb-8 opacity-95 max-w-3xl mx-auto">
-            Clean messy text from PDFs, emails, AI tools, and websites in one click. Remove extra spaces, fix line breaks, and make your text look professional instantly.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button 
-              onClick={scrollToApp}
-              className="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 flex items-center gap-2"
-            >
-              Try Free Now
-              <ChevronDown size={20} />
-            </button>
-            <button 
-              onClick={() => setShowUpgrade(true)}
-              className="bg-indigo-800 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-indigo-900 transition-all border-2 border-white/30"
-            >
-              Get Chrome Extension
-            </button>
-          </div>
-          <p className="mt-6 text-sm opacity-80">
-            ✓ No signup required • ✓ Privacy-first • ✓ Works offline
-          </p>
-        </div>
-      </section>
-
-      {/* Main Tool Section */}
-      <section id="app-tool" className="py-12 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold text-gray-900 mb-3">Try It Now - Paste Your Messy Text</h3>
-            <div className="flex gap-3 justify-center flex-wrap">
-              <button
-                onClick={loadDemo}
-                className="text-indigo-600 hover:text-indigo-700 font-semibold text-sm underline"
-              >
-                📄 Load Short Demo
-              </button>
-              <button
-                onClick={loadLargeDemo}
-                className="text-purple-600 hover:text-purple-700 font-semibold text-sm underline"
-              >
-                📚 Load Large Demo (Real PDF Example)
-              </button>
-              {dailyUses > 0 && (
-                <button
-                  onClick={resetDailyLimit}
-                  className="text-green-600 hover:text-green-700 font-semibold text-sm underline"
-                >
-                  🔄 Reset Daily Limit (Testing)
-                </button>
-              )}
-            </div>
-          </div>
-
-          {/* Usage Counter */}
-          {usesLeft > 0 ? (
-            <div className="text-center mb-6">
-              <p className="text-sm text-gray-500">
-                Free uses today: <span className="font-semibold text-indigo-600">{usesLeft} of {MAX_DAILY_USES} remaining</span>
-              </p>
-            </div>
-          ) : (
-            <div className="text-center mb-6 bg-red-50 border border-red-200 rounded-lg p-3 max-w-md mx-auto">
-              <p className="text-sm text-red-600 font-semibold">
-                ⚠️ Daily limit reached. Get the extension for unlimited cleans!
-              </p>
-            </div>
-          )}
-
-          {/* Tool Interface */}
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-white rounded-xl shadow-lg border-2 border-gray-200 p-6">
-              <div className="flex items-center justify-between mb-3">
-                <label className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                  <span className="text-red-500">📄</span> MESSY TEXT
-                </label>
-                <span className="text-xs text-gray-500">{inputText.length.toLocaleString()}/{MAX_CHARS.toLocaleString()}</span>
-              </div>
-              <textarea
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-                placeholder="Paste your messy text here...
-
-Try copying text from a PDF or email!"
-                className="w-full h-64 p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none font-mono text-sm"
-              />
-              <button
-                onClick={handleClean}
-                disabled={!inputText.trim() || dailyUses >= MAX_DAILY_USES}
-                className="w-full mt-4 bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all font-bold flex items-center justify-center gap-2 text-lg transform hover:scale-105"
-              >
-                <Zap size={20} />
-                {dailyUses >= MAX_DAILY_USES ? 'Daily Limit Reached' : 'Clean My Text ✨'}
-              </button>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-lg border-2 border-gray-200 p-6">
-              <div className="flex items-center justify-between mb-3">
-                <label className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                  <span className="text-green-500">✨</span> CLEAN TEXT
-                </label>
-                {outputText && (
-                  <button
-                    onClick={handleCopy}
-                    className="text-sm bg-indigo-600 text-white px-3 py-1.5 rounded hover:bg-indigo-700 flex items-center gap-1 font-medium"
-                  >
-                    {copied ? (
-                      <>
-                        <Check size={14} />
-                        Copied!
-                      </>
-                    ) : (
-                      <>
-                        <Copy size={14} />
-                        Copy
-                      </>
-                    )}
-                  </button>
-                )}
-              </div>
-              <div className="w-full h-64 p-4 border-2 border-dashed border-gray-300 rounded-lg bg-gradient-to-br from-green-50 to-blue-50 overflow-auto font-mono text-sm whitespace-pre-wrap">
-                {outputText || (
-                  <div className="text-gray-400 text-center mt-20">
-                    {showDemo ? (
-                      <div>
-                        <p className="mb-2">👆 Click "Clean My Text" to see the magic!</p>
-                        <p className="text-xs">Watch messy text transform instantly</p>
-                      </div>
-                    ) : (
-                      "Your cleaned text will appear here..."
-                    )}
-                  </div>
-                )}
-              </div>
-              
-              {outputText && (
-                <div className="mt-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-4 border border-indigo-200">
-                  <p className="text-sm font-semibold text-gray-700 mb-2">✅ Cleaning Results:</p>
-                  <div className="grid grid-cols-3 gap-2 text-center">
-                    <div className="bg-white rounded-lg p-2 border border-indigo-100">
-                      <p className="text-2xl font-bold text-indigo-600">{stats.spaces}</p>
-                      <p className="text-xs text-gray-600">spaces</p>
-                    </div>
-                    <div className="bg-white rounded-lg p-2 border border-purple-100">
-                      <p className="text-2xl font-bold text-purple-600">{stats.breaks}</p>
-                      <p className="text-xs text-gray-600">breaks</p>
-                    </div>
-                    <div className="bg-white rounded-lg p-2 border border-pink-100">
-                      <p className="text-2xl font-bold text-pink-600">{stats.chars}</p>
-                      <p className="text-xs text-gray-600">cleaned</p>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Before/After Example */}
-          <div className="bg-white rounded-xl shadow-lg border-2 border-indigo-200 p-8">
-            <h4 className="text-2xl font-bold text-gray-900 mb-6 text-center">Why CopyCleaner > Cmd+Shift+V</h4>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-2xl">❌</span>
-                  <p className="text-sm font-bold text-red-600">Cmd+Shift+V doesn't fix this</p>
-                </div>
-                <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4 font-mono text-sm">
-                  <span className="text-red-700">
-                    This    is   badly<br />
-                    spaced    text from<br />
-                    a    PDF   document
-                  </span>
-                </div>
-              </div>
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-2xl">✅</span>
-                  <p className="text-sm font-bold text-green-600">CopyCleaner fixes it perfectly</p>
-                </div>
-                <div className="bg-green-50 border-2 border-green-300 rounded-lg p-4 font-mono text-sm">
-                  <span className="text-green-700">
-                    This is badly spaced text from a PDF document
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section id="features" className="py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <h3 className="text-4xl font-bold text-center mb-12 text-gray-900">What CopyCleaner Fixes</h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-xl shadow-md border-2 border-indigo-200">
-              <div className="text-4xl mb-4">🤖</div>
-              <h4 className="text-xl font-bold mb-2 text-gray-900">AI Text Formatting</h4>
-              <p className="text-gray-600">Cleans messy output from ChatGPT, Claude, Jasper, and other AI tools. Makes AI text look human and professional.</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <div className="text-4xl mb-4">📄</div>
-              <h4 className="text-xl font-bold mb-2 text-gray-900">PDF Text Problems</h4>
-              <p className="text-gray-600">Fixes broken line breaks, weird spacing, and formatting issues when copying from PDFs.</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <div className="text-4xl mb-4">📧</div>
-              <h4 className="text-xl font-bold mb-2 text-gray-900">Email Formatting</h4>
-              <p className="text-gray-600">Removes reply chains, signatures, and messy formatting from forwarded emails.</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <div className="text-4xl mb-4">🌐</div>
-              <h4 className="text-xl font-bold mb-2 text-gray-900">Web Content</h4>
-              <p className="text-gray-600">Cleans text copied from websites, removing extra HTML formatting and spaces.</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <div className="text-4xl mb-4">💬</div>
-              <h4 className="text-xl font-bold mb-2 text-gray-900">Smart Quotes</h4>
-              <p className="text-gray-600">Converts curly quotes and apostrophes to regular ones for consistent formatting.</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <div className="text-4xl mb-4">⚡</div>
-              <h4 className="text-xl font-bold mb-2 text-gray-900">Extra Spaces & Breaks</h4>
-              <p className="text-gray-600">Removes multiple spaces, tabs, invisible characters, and awkward line breaks instantly.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section id="how-it-works" className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h3 className="text-4xl font-bold mb-12 text-gray-900">How It Works</h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <div className="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
-              <h4 className="text-xl font-bold mb-2 text-gray-900">Paste Text</h4>
-              <p className="text-gray-600">Copy messy text from anywhere and paste it into CopyCleaner</p>
-            </div>
-            <div>
-              <div className="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
-              <h4 className="text-xl font-bold mb-2 text-gray-900">Click Clean</h4>
-              <p className="text-gray-600">Our tool instantly analyzes and fixes all formatting issues</p>
-            </div>
-            <div>
-              <div className="w-16 h-16 bg-pink-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
-              <h4 className="text-xl font-bold mb-2 text-gray-900">Copy Result</h4>
-              <p className="text-gray-600">Get perfectly formatted text ready to use anywhere</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4">
-          <h3 className="text-4xl font-bold text-center mb-12 text-gray-900">Frequently Asked Questions</h3>
-          <div className="space-y-4">
-            {[
-              {
-                q: "How do I cancel my subscription?",
-                a: "Easy! Check your subscription receipt email from Lemon Squeezy and click 'Manage Subscription.' You can cancel, pause, or modify your plan anytime. No need to contact us. Cancellations take effect at the end of your current billing period."
-              },
-              {
-                q: "Is CopyCleaner free?",
-                a: "Yes! The web app is free with 3 cleans per day. The browser extension offers unlimited cleaning for $4.99/month or $39/year (save 34%)."
-              },
-              {
-                q: "How is this different from 'Paste without formatting'?",
-                a: "Cmd+Shift+V only removes basic formatting. CopyCleaner fixes PDF line breaks, removes extra spaces, converts smart quotes, removes invisible characters, and cleans messy AI-generated text. It's designed specifically for real-world formatting nightmares."
-              },
-              {
-                q: "Does it work with ChatGPT and AI text?",
-                a: "Absolutely! CopyCleaner is perfect for cleaning messy output from ChatGPT, Claude, Jasper, or any AI tool. It removes weird spacing, fixes formatting inconsistencies, and makes AI text look natural and professional."
-              },
-              {
-                q: "Does my text get sent to a server?",
-                a: "No! All text cleaning happens in your browser. Your text never leaves your device, ensuring complete privacy. We don't see, store, or transmit your content."
-              },
-              {
-                q: "What browsers are supported?",
-                a: "The web app works in all modern browsers. The extension is available for Chrome and Firefox, with Safari support coming soon."
-              },
-              {
-                q: "What's included in the premium extension?",
-                a: "Premium includes: unlimited cleans, no character limit, right-click context menu, keyboard shortcuts, paste history (last 50 cleans), works offline, and priority support."
-              },
-              {
-                q: "Do you offer refunds?",
-                a: "Yes! We offer a 7-day money-back guarantee. If you're not satisfied, email hello@copycleaner.co within 7 days for a full refund, no questions asked."
-              }
-            ].map((faq, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                <button
-                  onClick={() => toggleFaq(index)}
-                  className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
-                >
-                  <h4 className="text-lg font-bold text-gray-900 pr-4">{faq.q}</h4>
-                  <svg 
-                    className={`w-5 h-5 text-gray-500 transition-transform flex-shrink-0 ${openFaq === index ? 'rotate-180' : ''}`}
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                {openFaq === index && (
-                  <div className="px-6 pb-4 text-gray-600 animate-in">
-                    {faq.a}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-center">
-        <div className="max-w-4xl mx-auto px-4">
-          <h3 className="text-4xl font-bold mb-6">Ready for Unlimited Cleaning?</h3>
-          <p className="text-xl mb-8 opacity-95">
-            Get the browser extension for unlimited cleans, paste history, and keyboard shortcuts
-          </p>
-          <button 
-            onClick={() => setShowUpgrade(true)}
-            className="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all inline-flex items-center gap-2"
-          >
-            <Chrome size={24} />
-            Install Chrome Extension - $4.99/mo
-          </button>
-          <p className="mt-4 text-sm opacity-75">Also available for Firefox • 7-day money-back guarantee</p>
-        </div>
-      </section>
-
-      {/* Upgrade Modal */}
-      {showUpgrade && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative">
-            <button
-              onClick={() => setShowUpgrade(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl"
-            >
-              ✕
-            </button>
+            const result = cleanText(state.inputText);
+            state.outputText = result.cleaned;
+            state.stats = result.stats;
             
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Chrome className="text-white" size={32} />
-              </div>
-              
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                Unlock Unlimited Cleaning
-              </h3>
-              
-              <p className="text-gray-600 mb-6">
-                Install our browser extension for unlimited text cleaning, right-click context menu, and paste history.
-              </p>
+            state.dailyUses++;
+            saveDailyUses(state.dailyUses);
 
-              <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-lg p-4 mb-6 text-left border border-indigo-200">
-                <p className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                  <Sparkles className="text-indigo-600" size={20} />
-                  Premium Features:
-                </p>
-                <ul className="space-y-2 text-sm text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-500 font-bold">✓</span>
-                    <span><strong>Unlimited</strong> cleans per day</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-500 font-bold">✓</span>
-                    <span><strong>No character limit</strong></span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-500 font-bold">✓</span>
-                    <span><strong>Right-click</strong> to clean any text</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-500 font-bold">✓</span>
-                    <span><strong>Keyboard shortcut</strong> (Cmd+Opt+V)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-500 font-bold">✓</span>
-                    <span><strong>Paste history</strong> (last 50 cleans)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-green-500 font-bold">✓</span>
-                    <span><strong>Works offline</strong></span>
-                  </li>
-                </ul>
-              </div>
+            updateUI();
+            document.getElementById('outputText').textContent = state.outputText;
+            document.getElementById('statsBox').classList.remove('hidden');
+            document.getElementById('copyBtn').classList.remove('hidden');
+            document.getElementById('statSpaces').textContent = state.stats.spaces;
+            document.getElementById('statBreaks').textContent = state.stats.breaks;
+            document.getElementById('statChars').textContent = state.stats.chars;
 
-              <div className="space-y-3">
-                <button className="w-full bg-indigo-600 text-white py-3 rounded-lg font-bold hover:bg-indigo-700 transition-colors text-lg">
-                  Install for Chrome ($4.99/mo)
-                </button>
-                <button className="w-full bg-gray-600 text-white py-3 rounded-lg font-bold hover:bg-gray-700 transition-colors">
-                  Install for Firefox ($4.99/mo)
-                </button>
-              </div>
+            if (state.dailyUses >= MAX_DAILY_USES) {
+                setTimeout(() => showUpgradeModal(), 1000);
+            }
+        }
 
-              <p className="text-xs text-gray-500 mt-4">
-                Or get yearly for $39 (save 34%) • 7-day money-back guarantee
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
+        function handleCopy() {
+            navigator.clipboard.writeText(state.outputText);
+            const btn = document.getElementById('copyBtn');
+            btn.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Copied!`;
+            setTimeout(() => {
+                btn.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg> Copy`;
+            }, 2000);
+        }
 
-      {/* Footer */}
-      <footer className="border-t bg-white py-8">
-        <div className="max-w-6xl mx-auto px-4 text-center text-gray-600 text-sm">
-          <p className="mb-4">© 2025 CopyCleaner.co • Your text never leaves your browser • Built with privacy in mind</p>
-          <div className="flex justify-center gap-6 flex-wrap">
-            <a href="/blog" className="hover:text-gray-900">Blog</a>
-            <a href="/privacy" className="hover:text-gray-900">Privacy Policy</a>
-            <a href="/terms" className="hover:text-gray-900">Terms of Service</a>
-            <a href="/refund" className="hover:text-gray-900">Refund Policy</a>
-            <a href="mailto:hello@copycleaner.co" className="hover:text-gray-900">Contact</a>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
-}
+        function loadDemo() {
+            document.getElementById('inputText').value = demoText;
+            state.inputText = demoText;
+            state.outputText = '';
+            document.getElementById('outputText').innerHTML = `<div class="text-gray-400 text-center mt-20"><p class="mb-2">👆 Click "Clean My Text" to see the magic!</p><p class="text-xs">Watch messy text transform instantly</p></div>`;
+            document.getElementById('statsBox').classList.add('hidden');
+            document.getElementById('copyBtn').classList.add('hidden');
+            updateCharCount();
+        }
+
+        function loadLargeDemo() {
+            document.getElementById('inputText').value = largeMessyText;
+            state.inputText = largeMessyText;
+            state.outputText = '';
+            document.getElementById('outputText').innerHTML = `<div class="text-gray-400 text-center mt-20"><p class="mb-2">👆 Click "Clean My Text" to see the magic!</p><p class="text-xs">Watch messy text transform instantly</p></div>`;
+            document.getElementById('statsBox').classList.add('hidden');
+            document.getElementById('copyBtn').classList.add('hidden');
+            updateCharCount();
+        }
+
+        function resetDailyLimit() {
+            state.dailyUses = 0;
+            saveDailyUses(0);
+            updateUI();
+            alert('Daily limit reset! You have 3 fresh uses.');
+        }
+
+        function updateCharCount() {
+            const count = state.inputText.length;
+            document.getElementById('charCount').textContent = `${count.toLocaleString()}/${MAX_CHARS.toLocaleString()}`;
+        }
+
+        function updateUI() {
+            const usesLeft = Math.max(0, MAX_DAILY_USES - state.dailyUses);
+            document.getElementById('usesLeft').textContent = `${usesLeft} of ${MAX_DAILY_USES} remaining`;
+            
+            if (usesLeft === 0) {
+                document.getElementById('usageCounter').classList.add('hidden');
+                document.getElementById('limitReached').classList.remove('hidden');
+                document.getElementById('cleanBtn').disabled = true;
+                document.getElementById('cleanBtn').innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg> Daily Limit Reached`;
+            } else {
+                document.getElementById('usageCounter').classList.remove('hidden');
+                document.getElementById('limitReached').classList.add('hidden');
+                document.getElementById('cleanBtn').disabled = false;
+                document.getElementById('cleanBtn').innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg> Clean My Text ✨`;
+            }
+
+            if (state.dailyUses > 0) {
+                document.getElementById('resetBtn').classList.remove('hidden');
+            }
+        }
+
+        function scrollToApp() {
+            document.getElementById('app-tool').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showUpgradeModal() {
+            document.getElementById('upgradeModal').classList.remove('hidden');
+        }
+
+        function hideUpgradeModal() {
+            document.getElementById('upgradeModal').classList.add('hidden');
+        }
+
+        function renderFAQs() {
+            const faqs = [
+                {
+                    q: "How do I cancel my subscription?",
+                    a: "Easy! Check your subscription receipt email from Lemon Squeezy and click 'Manage Subscription.' You can cancel, pause, or modify your plan anytime. No need to contact us. Cancellations take effect at the end of your current billing period."
+                },
+                {
+                    q: "Is CopyCleaner free?",
+                    a: "Yes! The web app is free with 3 cleans per day. The browser extension offers unlimited cleaning for $4.99/month or $39/year (save 34%)."
+                },
+                {
+                    q: "How is this different from 'Paste without formatting'?",
+                    a: "Cmd+Shift+V only removes basic formatting. CopyCleaner fixes PDF line breaks, removes extra spaces, converts smart quotes, removes invisible characters, and cleans messy AI-generated text. It's designed specifically for real-world formatting nightmares."
+                },
+                {
+                    q: "Does it work with ChatGPT and AI text?",
+                    a: "Absolutely! CopyCleaner is perfect for cleaning messy output from ChatGPT, Claude, Jasper, or any AI tool. It removes weird spacing, fixes formatting inconsistencies, and makes AI text look natural and professional."
+                },
+                {
+                    q: "Does my text get sent to a server?",
+                    a: "No! All text cleaning happens in your browser. Your text never leaves your device, ensuring complete privacy. We don't see, store, or transmit your content."
+                },
+                {
+                    q: "What browsers are supported?",
+                    a: "The web app works in all modern browsers. The extension is available for Chrome and Firefox, with Safari support coming soon."
+                },
+                {
+                    q: "What's included in the premium extension?",
+                    a: "Premium includes: unlimited cleans, no character limit, right-click context menu, keyboard shortcuts, paste history (last 50 cleans), works offline, and priority support."
+                },
+                {
+                    q: "Do you offer refunds?",
+                    a: "Yes! We offer a 7-day money-back guarantee. If you're not satisfied, email hello@copycleaner.co within 7 days for a full refund, no questions asked."
+                }
+            ];
+
+            const faqSection = document.getElementById('faqSection');
+            faqs.forEach((faq, index) => {
+                const faqDiv = document.createElement('div');
+                faqDiv.className = 'bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden';
+                faqDiv.innerHTML = `
+                    <button onclick="toggleFaq(${index})" class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors">
+                        <h4 class="text-lg font-bold text-gray-900 pr-4">${faq.q}</h4>
+                        <svg id="faq-icon-${index}" class="w-5 h-5 text-gray-500 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div id="faq-answer-${index}" class="px-6 pb-4 text-gray-600 hidden animate-in">
+                        ${faq.a}
+                    </div>
+                `;
+                faqSection.appendChild(faqDiv);
+            });
+        }
+
+        function toggleFaq(index) {
+            const answer = document.getElementById(`faq-answer-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            
+            if (answer.classList.contains('hidden')) {
+                answer.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                answer.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Initialize on page load
+        init();
+    </script>
+</body>
+</html>
