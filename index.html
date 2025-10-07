@@ -30,6 +30,39 @@
         .animate-in {
             animation: slideDown 0.3s ease-out;
         }
+        
+        /* Hover animations for cards */
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Subtle shake on hover for text areas */
+        @keyframes subtleShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-2px); }
+            75% { transform: translateX(2px); }
+        }
+        .text-box-hover {
+            transition: all 0.3s ease;
+        }
+        .text-box-hover:hover {
+            animation: subtleShake 0.5s ease-in-out;
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3), 0 4px 6px -2px rgba(99, 102, 241, 0.2);
+            border-color: rgb(99, 102, 241);
+        }
+        
+        /* Pulse effect for primary button */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        .btn-pulse:hover {
+            animation: pulse 0.6s ease-in-out infinite;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
@@ -90,9 +123,6 @@
                     <button onclick="loadLargeDemo()" class="text-purple-600 hover:text-purple-700 font-semibold text-sm underline">
                         📚 Load Large Demo (Real PDF Example)
                     </button>
-                    <button id="resetBtn" onclick="resetDailyLimit()" class="text-green-600 hover:text-green-700 font-semibold text-sm underline hidden">
-                        🔄 Reset Daily Limit (Testing)
-                    </button>
                 </div>
             </div>
 
@@ -110,7 +140,7 @@
 
             <!-- Tool Interface -->
             <div class="grid md:grid-cols-2 gap-6 mb-8">
-                <div class="bg-white rounded-xl shadow-lg border-2 border-gray-200 p-6">
+                <div class="bg-white rounded-xl shadow-lg border-2 border-gray-200 p-6 text-box-hover">
                     <div class="flex items-center justify-between mb-3">
                         <label class="text-sm font-semibold text-gray-700 flex items-center gap-2">
                             <span class="text-red-500">📄</span> MESSY TEXT
@@ -127,14 +157,14 @@ Try copying text from a PDF or email!"
                     <button
                         id="cleanBtn"
                         onclick="handleClean()"
-                        class="w-full mt-4 bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all font-bold flex items-center justify-center gap-2 text-lg transform hover:scale-105"
+                        class="w-full mt-4 bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all font-bold flex items-center justify-center gap-2 text-lg btn-pulse"
                     >
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         Clean My Text ✨
                     </button>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-lg border-2 border-gray-200 p-6">
+                <div class="bg-white rounded-xl shadow-lg border-2 border-gray-200 p-6 text-box-hover">
                     <div class="flex items-center justify-between mb-3">
                         <label class="text-sm font-semibold text-gray-700 flex items-center gap-2">
                             <span class="text-green-500">✨</span> CLEAN TEXT
@@ -207,32 +237,32 @@ Try copying text from a PDF or email!"
         <div class="max-w-6xl mx-auto px-4">
             <h3 class="text-4xl font-bold text-center mb-12 text-gray-900">What CopyCleaner Fixes</h3>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-md border-2 border-indigo-200">
+                <div class="bg-white p-6 rounded-xl shadow-md border-2 border-indigo-200 hover-lift">
                     <div class="text-4xl mb-4">🤖</div>
                     <h4 class="text-xl font-bold mb-2 text-gray-900">AI Text Formatting</h4>
                     <p class="text-gray-600">Cleans messy output from ChatGPT, Claude, Jasper, and other AI tools. Makes AI text look human and professional.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
                     <div class="text-4xl mb-4">📄</div>
                     <h4 class="text-xl font-bold mb-2 text-gray-900">PDF Text Problems</h4>
                     <p class="text-gray-600">Fixes broken line breaks, weird spacing, and formatting issues when copying from PDFs.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
                     <div class="text-4xl mb-4">📧</div>
                     <h4 class="text-xl font-bold mb-2 text-gray-900">Email Formatting</h4>
                     <p class="text-gray-600">Removes reply chains, signatures, and messy formatting from forwarded emails.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
                     <div class="text-4xl mb-4">🌐</div>
                     <h4 class="text-xl font-bold mb-2 text-gray-900">Web Content</h4>
                     <p class="text-gray-600">Cleans text copied from websites, removing extra HTML formatting and spaces.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
                     <div class="text-4xl mb-4">💬</div>
                     <h4 class="text-xl font-bold mb-2 text-gray-900">Smart Quotes</h4>
                     <p class="text-gray-600">Converts curly quotes and apostrophes to regular ones for consistent formatting.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-md">
+                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
                     <div class="text-4xl mb-4">⚡</div>
                     <h4 class="text-xl font-bold mb-2 text-gray-900">Extra Spaces & Breaks</h4>
                     <p class="text-gray-600">Removes multiple spaces, tabs, invisible characters, and awkward line breaks instantly.</p>
@@ -565,10 +595,6 @@ properly    in    most    systems.`;
                 document.getElementById('limitReached').classList.add('hidden');
                 document.getElementById('cleanBtn').disabled = false;
                 document.getElementById('cleanBtn').innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg> Clean My Text ✨`;
-            }
-
-            if (state.dailyUses > 0) {
-                document.getElementById('resetBtn').classList.remove('hidden');
             }
         }
 
