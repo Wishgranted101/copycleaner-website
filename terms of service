@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - CopyCleaner.co</title>
+    <meta name="description" content="Terms of Service for CopyCleaner - Text cleaning tool">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Header -->
+    <header class="border-b bg-white shadow-sm">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                    C
+                </div>
+                <h1 class="text-xl font-bold text-gray-900">CopyCleaner.co</h1>
+            </a>
+            <a href="/" class="text-indigo-600 hover:text-indigo-700 font-medium text-sm">← Back to Home</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        <div class="bg-white rounded-xl shadow-md p-8 md:p-12">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Terms of Service</h1>
+            <p class="text-sm text-gray-500 mb-8">Last Updated: January 15, 2025</p>
+
+            <div class="prose prose-indigo max-w-none">
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">1. Agreement to Terms</h2>
+                    <p class="text-gray-700 mb-4">By accessing or using CopyCleaner.co ("Service"), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of these terms, you may not access the Service.</p>
+                </section>
+
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">2. Description of Service</h2>
+                    <p class="text-gray-700 mb-4">CopyCleaner provides a text cleaning tool that removes formatting issues from copied text. The Service is available as:</p>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>A free web application with usage limitations</li>
+                        <li>A premium browser extension (Chrome/Firefox) via paid subscription</li>
+                    </ul>
+                </section>
+
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">3. User Accounts and Subscriptions</h2>
+                    
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">3.1 Free Tier</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>Limited to 3 text cleans per day</li>
+                        <li>Maximum 5,000 characters per clean</li>
+                        <li>No account registration required</li>
+                    </ul>
+
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">3.2 Premium Subscription</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>Requires payment via Lemon Squeezy</li>
+                        <li>Billed monthly ($4.99/month) or annually ($39/year)</li>
+                        <li>Provides unlimited cleans and additional features</li>
+                        <li>Auto-renews unless cancelled</li>
+                    </ul>
+                </section>
+
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">4. Payment Terms</h2>
+                    
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">4.1 Billing</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>All fees are in USD</li>
+                        <li>Payment processed via Lemon Squeezy</li>
+                        <li>Subscriptions auto-renew on renewal date</li>
+                        <li>You authorize recurring charges to your payment method</li>
+                    </ul>
+
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">4.2 Refunds</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>7-day money-back guarantee (see Refund Policy)</li>
+                        <li>No refunds for partial months or unused portions</li>
+                        <li>We reserve the right to deny refunds for abuse</li>
+                    </ul>
+
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">4.3 Price Changes</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>We may change prices with 30 days notice</li>
+                        <li>Existing subscribers maintain current rate until next renewal</li>
+                        <li>Continued use after price change constitutes acceptance</li>
+                    </ul>
+                </section>
+
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">5. Acceptable Use</h2>
+                    <p class="text-gray-700 mb-4">You agree NOT to:</p>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>Use the Service for any illegal purpose</li>
+                        <li>Attempt to circumvent usage limitations</li>
+                        <li>Reverse engineer or decompile the Service</li>
+                        <li>Use automated systems to access the Service excessively</li>
+                        <li>Violate any laws in your jurisdiction</li>
+                        <li>Impersonate others or provide false information</li>
+                        <li>Distribute malware or harmful code</li>
+                        <li>Attempt to gain unauthorized access to our systems</li>
+                    </ul>
+                </section>
+
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">6. Privacy and Data</h2>
+                    
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">6.1 Client-Side Processing</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>All text cleaning occurs in your browser</li>
+                        <li>Your text content is NEVER sent to our servers</li>
+                        <li>We do not store, log, or access your text data</li>
+                    </ul>
+
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">6.2 Data We Collect</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>Anonymous usage analytics (page views, clicks)</li>
+                        <li>Payment information (processed by Lemon Squeezy, not stored by us)</li>
+                        <li>Email address (if provided for account/support)</li>
+                        <li>Browser extension usage statistics (anonymous)</li>
+                    </ul>
+                    <p class="text-gray-700 mt-4">See our <a href="/privacy" class="text-indigo-600 hover:text-indigo-700 underline">Privacy Policy</a> for full details.</p>
+                </section>
+
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">7. Intellectual Property</h2>
+                    
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">7.1 Our Rights</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>CopyCleaner name, logo, and branding are our property</li>
+                        <li>The Service and its original content are owned by us</li>
+                        <li>All rights not expressly granted are reserved</li>
+                    </ul>
+
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">7.2 Your Rights</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>You retain all rights to text you clean with our Service</li>
+                        <li>You grant us no rights to your content</li>
+                        <li>Your cleaned text belongs to you</li>
+                    </ul>
+                </section>
+
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">8. Service Availability</h2>
+                    
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">8.1 No Warranty</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>Service provided "AS IS" without warranties</li>
+                        <li>We do not guarantee uninterrupted or error-free service</li>
+                        <li>We may modify or discontinue features at any time</li>
+                    </ul>
+
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">8.2 Maintenance</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>We may perform maintenance with or without notice</li>
+                        <li>Service may be temporarily unavailable</li>
+                        <li>We are not liable for any interruptions</li>
+                    </ul>
+                </section>
+
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">9. Limitation of Liability</h2>
+                    <p class="text-gray-700 mb-4 font-semibold">TO THE MAXIMUM EXTENT PERMITTED BY LAW:</p>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>We are not liable for any indirect, incidental, or consequential damages</li>
+                        <li>Our total liability is limited to the amount you paid in the last 12 months</li>
+                        <li>We are not liable for loss of data, profits, or business</li>
+                        <li>Some jurisdictions do not allow these limitations</li>
+                    </ul>
+                </section>
+
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">10. Termination</h2>
+                    
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">10.1 By You</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>You may cancel your subscription at any time through your Lemon Squeezy subscription receipt email</li>
+                        <li>Click "Manage Subscription" to cancel, pause, or modify your plan</li>
+                        <li>Cancellation takes effect at end of current billing period</li>
+                        <li>No refunds for partial periods</li>
+                    </ul>
+
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 mt-6">10.2 By Us</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>We may suspend or terminate access for Terms violations</li>
+                        <li>We may terminate Service with 30 days notice</li>
+                        <li>Refunds provided at our discretion for early termination</li>
+                    </ul>
+                </section>
+
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">11. Changes to Terms</h2>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>We may modify these Terms at any time</li>
+                        <li>Changes effective immediately upon posting</li>
+                        <li>Continued use constitutes acceptance of new Terms</li>
+                        <li>Material changes will be notified via email or Service</li>
+                    </ul>
+                </section>
+
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">12. Governing Law</h2>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                        <li>These Terms governed by laws of Delaware, United States</li>
+                        <li>Disputes resolved in courts of Delaware</li>
+                        <li>You waive any objection to venue or jurisdiction</li>
+                    </ul>
+                </section>
+
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">13. Contact Us</h2>
+                    <p class="text-gray-700 mb-4">For questions about these Terms, contact us:</p>
+                    <ul class="list-none text-gray-700 space-y-2">
+                        <li><strong>Email:</strong> <a href="mailto:hello@copycleaner.co" class="text-indigo-600 hover:text-indigo-700">hello@copycleaner.co</a></li>
+                        <li><strong>Website:</strong> <a href="/contact" class="text-indigo-600 hover:text-indigo-700">copycleaner.co/contact</a></li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <!-- Back to Top -->
+        <div class="text-center mt-8">
+            <a href="#" class="text-indigo-600 hover:text-indigo-700 font-medium">↑ Back to Top</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t bg-white py-8 mt-12">
+        <div class="max-w-4xl mx-auto px-4 text-center text-gray-600 text-sm">
+            <p class="mb-4">© 2025 CopyCleaner.co • Your text never leaves your browser</p>
+            <div class="flex justify-center gap-6 flex-wrap">
+                <a href="/" class="hover:text-gray-900">Home</a>
+                <a href="/privacy" class="hover:text-gray-900">Privacy Policy</a>
+                <a href="/refund" class="hover:text-gray-900">Refund Policy</a>
+                <a href="/contact" class="hover:text-gray-900">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
