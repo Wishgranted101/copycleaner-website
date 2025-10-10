@@ -3,255 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - CopyCleaner.co</title>
-    <meta name="description" content="Learn about CopyCleaner - The simple tool that fixes messy text from PDFs, emails, and AI tools">
+    <title>About CopyCleaner - Our Story & Mission</title>
+    <meta name="description" content="Learn about CopyCleaner's mission to make text formatting easy and accessible for everyone.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-    </style>
 </head>
-<body class="bg-gray-50">
+<body class="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
     
     <!-- Header -->
-    <header class="border-b bg-white shadow-sm sticky top-0 z-50">
+    <header class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-            <a href="/index.html" class="flex items-center gap-2">
-                <img src="/copycleaner-logo.png" alt="CopyCleaner Logo" class="h-10 w-auto">
-                <h1 class="text-xl font-bold text-gray-900">CopyCleaner.co</h1>
-            </a>
-            <a href="/index.html" class="text-indigo-600 hover:text-indigo-700 font-medium text-sm">← Back to Home</a>
+            <div class="flex items-center gap-3">
+                <img src="/copycleaner-logo.png" alt="CopyCleaner Logo" class="h-16 w-auto">
+                <a href="/" class="text-2xl font-bold text-gray-900 hover:text-indigo-600 transition-colors">CopyCleaner.co</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="/" class="text-gray-600 hover:text-gray-900 font-medium">Home</a>
+                <a href="/#features" class="hidden md:block text-gray-600 hover:text-gray-900 font-medium">Features</a>
+                <button 
+                    onclick="window.location.href='/'"
+                    class="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors font-medium"
+                >
+                    Get Extension
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section with Logo -->
-    <section class="relative bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white py-20 overflow-hidden">
-        <!-- Animated Background Elements -->
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl"></div>
-            <div class="absolute bottom-10 right-10 w-40 h-40 bg-white rounded-full blur-3xl"></div>
-            <div class="absolute top-1/2 left-1/2 w-48 h-48 bg-white rounded-full blur-3xl"></div>
-        </div>
-        
-        <div class="max-w-6xl mx-auto px-4 relative z-10">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <!-- Text Content -->
-                <div>
-                    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">About CopyCleaner</h1>
-                    <p class="text-xl md:text-2xl opacity-95 mb-8">Making text formatting simple, fast, and private</p>
-                    <div class="flex flex-wrap gap-4">
-                        <div class="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/30">
-                            <p class="text-3xl font-bold">10K+</p>
-                            <p class="text-sm opacity-90">Texts Cleaned Daily</p>
-                        </div>
-                        <div class="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/30">
-                            <p class="text-3xl font-bold">2 sec</p>
-                            <p class="text-sm opacity-90">Average Clean Time</p>
-                        </div>
-                        <div class="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/30">
-                            <p class="text-3xl font-bold">100%</p>
-                            <p class="text-sm opacity-90">Client-Side</p>
-                        </div>
-                    </div>
+    <!-- Hero Section -->
+    <section class="py-16 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-8">
+                <!-- Mascot Logo on the LEFT -->
+                <div class="flex-shrink-0">
+                    <img src="/copycleaner-logo.png" alt="CopyCleaner Mascot" class="w-48 h-48 object-contain rounded-2xl">
                 </div>
-                
-                <!-- Logo/Mascot -->
-                <div class="flex justify-center">
-                    <div class="relative float-animation">
-                        <img src="/copycleaner-logo.png" alt="CopyCleaner Mascot" class="w-80 h-80 object-contain drop-shadow-2xl">
-                    </div>
+                <!-- Text on the RIGHT -->
+                <div class="text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">About CopyCleaner</h1>
+                    <p class="text-xl opacity-90">Making text formatting simple, fast, and private</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Main Content -->
-    <main class="max-w-4xl mx-auto px-4 py-12">
-        
-        <!-- Our Story -->
-        <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-8 border-2 border-indigo-100">
-            <h2 class="text-4xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <span class="text-4xl">📖</span> Our Story
-            </h2>
-            <div class="prose prose-lg max-w-none text-gray-700 space-y-4">
-                <p>We've all experienced the frustration of copying text from a PDF and pasting it into an email, only to find that the formatting is a mess. There are extra spaces everywhere, random line breaks interrupting sentences, and smart quotes that don't display correctly.</p>
-                
-                <p>We knew there had to be a better way. Cmd+Shift+V didn't fix the issue, and manual editing took forever. That's why we created CopyCleaner.</p>
-                
-                <p>CopyCleaner is a simple tool that excels at one thing: instantly cleaning messy text. There are no complicated settings or a steep learning curve—paste, click, and you're done.</p>
+    <section class="py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            
+            <!-- Mascot Logo Section -->
+            <div class="flex flex-col md:flex-row items-center gap-8 mb-12">
+                <div class="md:w-1/3 flex justify-center">
+                    <img src="/copycleaner-logo.png" alt="CopyCleaner Mascot" class="w-48 h-48 object-contain rounded-2xl shadow-lg">
+                </div>
+                <div class="md:w-2/3">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Mission</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        CopyCleaner was born from frustration. We were tired of copying text from PDFs, emails, and websites only to spend minutes manually fixing spacing, line breaks, and weird formatting issues.
+                    </p>
+                </div>
             </div>
-        </div>
 
-        <!-- Our Mission -->
-        <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl border-2 border-indigo-200 p-8 md:p-12 mb-8">
-            <h2 class="text-4xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <span class="text-4xl">🎯</span> Our Mission
-            </h2>
-            <p class="text-2xl text-gray-800 leading-relaxed font-medium">
-                To save people time and frustration by making text formatting effortless, while respecting their privacy every step of the way.
+            <!-- Story Section -->
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">The Story Behind CopyCleaner</h2>
+                
+                <div class="space-y-6 text-gray-700 leading-relaxed">
+                    <p class="text-lg">
+                        In 2024, we realized something: <strong>everyone</strong> deals with messy text formatting. Students copying research papers. Professionals cleaning up AI-generated content. Writers pulling quotes from PDFs. Marketers formatting email copy.
+                    </p>
+                    
+                    <p class="text-lg">
+                        The existing solutions? Either they didn't work well enough (looking at you, Cmd+Shift+V) or they were clunky desktop apps that required installation, accounts, and complicated settings.
+                    </p>
+                    
+                    <p class="text-lg">
+                        We wanted something different:
+                    </p>
+                    
+                    <ul class="space-y-3 text-lg ml-6">
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-500 font-bold text-xl">✓</span>
+                            <span><strong>Instant:</strong> No waiting, no processing—clean text in one click</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-500 font-bold text-xl">✓</span>
+                            <span><strong>Private:</strong> All cleaning happens locally in your browser. We never see your text.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-500 font-bold text-xl">✓</span>
+                            <span><strong>Simple:</strong> Paste → Clean → Copy. That's it.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-500 font-bold text-xl">✓</span>
+                            <span><strong>Free:</strong> Core functionality available to everyone, forever</span>
+                        </li>
+                    </ul>
+                    
+                    <p class="text-lg">
+                        That's why we built CopyCleaner. It's the tool we wished existed when we were drowning in messy PDFs and broken email formatting.
+                    </p>
+                </div>
+            </div>
+
+            <!-- What We Fix -->
+            <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border-2 border-indigo-200 p-8 mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">What We Fix</h2>
+                <div class="grid md:grid-cols-2 gap-4 text-gray-700">
+                    <div class="flex items-start gap-3">
+                        <span class="text-2xl">🤖</span>
+                        <div>
+                            <h3 class="font-bold text-lg">AI Text Formatting</h3>
+                            <p class="text-sm">Clean up messy ChatGPT, Claude, and AI tool outputs</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-2xl">📄</span>
+                        <div>
+                            <h3 class="font-bold text-lg">PDF Line Breaks</h3>
+                            <p class="text-sm">Fix broken paragraphs and random spacing</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-2xl">📧</span>
+                        <div>
+                            <h3 class="font-bold text-lg">Email Threads</h3>
+                            <p class="text-sm">Remove reply chains and signatures</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-2xl">🌐</span>
+                        <div>
+                            <h3 class="font-bold text-lg">Web Content</h3>
+                            <p class="text-sm">Strip HTML tags and inline styles</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-2xl">📝</span>
+                        <div>
+                            <h3 class="font-bold text-lg">Word & Docs</h3>
+                            <p class="text-sm">Clean up font styles and list indents</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-2xl">💼</span>
+                        <div>
+                            <h3 class="font-bold text-lg">Resumes & Documents</h3>
+                            <p class="text-sm">Polish professional documents instantly</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Privacy First -->
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Privacy First, Always</h2>
+                <div class="space-y-4 text-gray-700 leading-relaxed">
+                    <p class="text-lg">
+                        <strong>Your text never leaves your device.</strong> Ever. We built CopyCleaner to run entirely in your browser using client-side JavaScript. When you click "Clean My Text," the processing happens locally on your computer—not on our servers.
+                    </p>
+                    <p class="text-lg">
+                        We don't collect, store, or transmit your text. We don't even have the technical capability to see what you're cleaning. Your documents, emails, and sensitive information stay private.
+                    </p>
+                    <div class="bg-indigo-50 border-l-4 border-indigo-600 p-4 rounded">
+                        <p class="text-indigo-900 font-semibold">🔒 Fun fact: CopyCleaner works offline. Try it—disconnect your internet and it still works perfectly.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Who We Are -->
+            <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl border-2 border-purple-200 p-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Who We Are</h2>
+                <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                    We're a small team of developers and designers who care about making the web better. We believe useful tools should be:
+                </p>
+                <ul class="space-y-2 text-gray-700 text-lg ml-6 mb-6">
+                    <li>• <strong>Fast</strong> to use</li>
+                    <li>• <strong>Respectful</strong> of your privacy</li>
+                    <li>• <strong>Accessible</strong> to everyone (not hidden behind paywalls)</li>
+                    <li>• <strong>Well-designed</strong> and pleasant to use</li>
+                </ul>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    If you have feedback, suggestions, or just want to say hi, reach out at <a href="mailto:hello@copycleaner.co" class="text-indigo-600 font-semibold hover:underline">hello@copycleaner.co</a>
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h3 class="text-3xl font-bold mb-4">Ready to Try CopyCleaner?</h3>
+            <p class="text-xl mb-8 opacity-90">
+                Start cleaning messy text in seconds—no signup required
             </p>
+            <a href="/" class="inline-block bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all">
+                Try It Free Now
+            </a>
         </div>
-
-        <!-- What Makes Us Different -->
-        <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-8 border-2 border-indigo-100">
-            <h2 class="text-4xl font-bold text-gray-900 mb-8 text-center">What Makes Us Different</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-                    <div class="text-4xl mb-3">🔒</div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Privacy First</h3>
-                    <p class="text-gray-700">All text cleaning happens in your browser. We never see, store, or transmit your content. Your data stays yours.</p>
-                </div>
-                
-                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-                    <div class="text-4xl mb-3">⚡</div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Lightning Fast</h3>
-                    <p class="text-gray-700">Clean thousands of characters in seconds. No waiting, no loading screens, just instant results.</p>
-                </div>
-                
-                <div class="bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-                    <div class="text-4xl mb-3">🎯</div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Built for Real Problems</h3>
-                    <p class="text-gray-700">We focus on the formatting issues people actually face: PDFs, emails, AI text, and websites.</p>
-                </div>
-                
-                <div class="bg-gradient-to-br from-orange-50 to-yellow-50 border-2 border-orange-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
-                    <div class="text-4xl mb-3">💡</div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Simple by Design</h3>
-                    <p class="text-gray-700">No complicated settings or features you'll never use. Just the essentials, done right.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Our Values -->
-        <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-8 border-2 border-indigo-100">
-            <h2 class="text-4xl font-bold text-gray-900 mb-8 text-center">Our Values</h2>
-            <div class="space-y-6">
-                <div class="flex gap-4 items-start p-6 bg-gray-50 rounded-xl hover:bg-indigo-50 transition-colors">
-                    <div class="text-3xl">🛡️</div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Privacy is Non-Negotiable</h3>
-                        <p class="text-gray-700">We designed CopyCleaner to work entirely client-side because we believe your text is your business, not ours.</p>
-                    </div>
-                </div>
-                
-                <div class="flex gap-4 items-start p-6 bg-gray-50 rounded-xl hover:bg-indigo-50 transition-colors">
-                    <div class="text-3xl">✨</div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Quality Over Quantity</h3>
-                        <p class="text-gray-700">We prefer to do one thing perfectly rather than ten things poorly. CopyCleaner solves text formatting, and it does it exceptionally well.</p>
-                    </div>
-                </div>
-                
-                <div class="flex gap-4 items-start p-6 bg-gray-50 rounded-xl hover:bg-indigo-50 transition-colors">
-                    <div class="text-3xl">🤝</div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Honest and Transparent</h3>
-                        <p class="text-gray-700">No hidden fees, dark patterns, or selling your data. What you see is what you get.</p>
-                    </div>
-                </div>
-                
-                <div class="flex gap-4 items-start p-6 bg-gray-50 rounded-xl hover:bg-indigo-50 transition-colors">
-                    <div class="text-3xl">💪</div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Built to Last</h3>
-                        <p class="text-gray-700">We're focused on building a sustainable business, not just chasing trends. CopyCleaner will be here when you need it.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Why We Built This -->
-        <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-8 border-2 border-indigo-100">
-            <h2 class="text-4xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <span class="text-4xl">💭</span> Why We Built This
-            </h2>
-            <div class="prose prose-lg max-w-none text-gray-700 space-y-4">
-                <p>As remote work became more common, we noticed people were copying and pasting text more than ever—from PDFs to emails, ChatGPT to Slack, and websites to documents. And each time, the formatting was a mess.</p>
-                
-                <p>Existing solutions were either too complicated, didn't work well, or required uploading your sensitive content to a server (which felt wrong).</p>
-                
-                <p>We believed there was a better way—a tool that:</p>
-                <ul class="list-disc pl-6 space-y-2">
-                    <li>Works instantly without uploads</li>
-                    <li>Respects your privacy completely</li>
-                    <li>Solves real formatting problems</li>
-                    <li>Costs less than a coffee</li>
-                </ul>
-                
-                <p>So, we built it. Now thousands of people use CopyCleaner every day to save time and avoid formatting headaches.</p>
-            </div>
-        </div>
-
-        <!-- Looking Forward -->
-        <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl border-2 border-indigo-200 p-8 md:p-12 mb-8">
-            <h2 class="text-4xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <span class="text-4xl">🚀</span> Looking Forward
-            </h2>
-            <div class="prose prose-lg max-w-none text-gray-700 space-y-4">
-                <p class="font-semibold text-gray-900">We're just getting started. Here's what's coming next:</p>
-                <ul class="list-disc pl-6 space-y-2">
-                    <li><strong>More browser support</strong> - Safari extension coming soon</li>
-                    <li><strong>Custom cleaning rules</strong> - Tailor CopyCleaner to your needs</li>
-                    <li><strong>Keyboard shortcuts</strong> - Clean text without leaving your workflow</li>
-                    <li><strong>Team plans</strong> - Share CopyCleaner with your entire team</li>
-                </ul>
-                <p>Want to influence what we build next? <a href="mailto:hello@copycleaner.co" class="text-indigo-600 hover:text-indigo-700 underline font-semibold">Get in touch</a> - we'd love to hear from you.</p>
-            </div>
-        </div>
-
-        <!-- Final CTA -->
-        <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl shadow-2xl p-8 md:p-12 text-center text-white">
-            <h2 class="text-4xl font-bold mb-4">Join Thousands of Happy Users</h2>
-            <p class="text-xl mb-8 opacity-95">Try CopyCleaner free today. No signup required.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="/index.html" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all inline-flex items-center justify-center gap-2 shadow-lg">
-                    Try It Free
-                </a>
-                <a href="mailto:hello@copycleaner.co" class="bg-indigo-800 border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-indigo-900 transition-all inline-flex items-center justify-center gap-2">
-                    Contact Us
-                </a>
-            </div>
-        </div>
-
-    </main>
+    </section>
 
     <!-- Footer -->
-    <footer class="border-t bg-white py-8 mt-12">
+    <footer class="border-t bg-white py-8">
         <div class="max-w-6xl mx-auto px-4">
-            <!-- Social Media Icons -->
             <div class="flex justify-center gap-4 mb-6">
-                <a href="https://twitter.com/copycleaner" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-indigo-600 transition-colors" aria-label="Twitter/X">
+                <a href="https://x.com/copycleaner_co" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-indigo-600 transition-colors">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
                     </svg>
                 </a>
-                <a href="https://tiktok.com/@copycleaner" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-indigo-600 transition-colors" aria-label="TikTok">
+                <a href="https://www.tiktok.com/@copycleaner.co" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-indigo-600 transition-colors">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"></path>
                     </svg>
                 </a>
-                <a href="https://linkedin.com/company/copycleaner" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-indigo-600 transition-colors" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/company/copycleaner-co/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-indigo-600 transition-colors">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
                     </svg>
                 </a>
             </div>
             
-            <p class="text-center text-gray-600 text-sm mb-4">© 2025 CopyCleaner.co • Your text never leaves your browser</p>
-            <div class="flex justify-center gap-6 flex-wrap text-sm">
-                <a href="/index.html" class="text-gray-600 hover:text-gray-900">Home</a>
-                <a href="/blog.html" class="text-gray-600 hover:text-gray-900">Blog</a>
-                <a href="/terms.html" class="text-gray-600 hover:text-gray-900">Terms of Service</a>
-                <a href="/privacy.html" class="text-gray-600 hover:text-gray-900">Privacy Policy</a>
-                <a href="/refund.html" class="text-gray-600 hover:text-gray-900">Refund Policy</a>
+            <p class="text-center text-gray-600 text-sm mb-4">© 2025 CopyCleaner.co • Your text never leaves your browser • Built with privacy in mind</p>
+            <div class="flex justify-center gap-6 flex-wrap text-sm mb-4">
+                <a href="/about" class="text-gray-600 hover:text-gray-900">About</a>
+                <a href="/privacy" class="text-gray-600 hover:text-gray-900">Privacy Policy</a>
+                <a href="/terms" class="text-gray-600 hover:text-gray-900">Terms of Service</a>
+                <a href="/refund" class="text-gray-600 hover:text-gray-900">Refund Policy</a>
                 <a href="mailto:hello@copycleaner.co" class="text-gray-600 hover:text-gray-900">Contact</a>
+            </div>
+            
+            <div class="flex justify-center">
+                <a href="https://www.paypal.com/paypalme/contentmultiply" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition-all font-semibold text-sm shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.39-2.1 1.39-1.6 0-2.23-.72-2.32-1.64H8.04c.1 1.7 1.36 2.66 2.86 2.97V19h2.34v-1.67c1.52-.29 2.72-1.16 2.73-2.77-.01-2.2-1.9-2.96-3.66-3.42z"/>
+                    </svg>
+                    Support CopyCleaner 💛
+                </a>
             </div>
         </div>
     </footer>
+
 </body>
 </html>
