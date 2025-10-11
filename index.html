@@ -675,34 +675,109 @@ properly    in    most    systems.`;
             let breaksFixed = 0;
             let originalLength = text.length;
 
-            // Remove extra spaces and tabs
+            // ===== 1. REMOVE HTML TAGS & WEB CONTENT =====
+            // Strip HTML tags completely
+            cleaned = cleaned.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '');
+            cleaned = cleaned.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
+            cleaned = cleaned.replace(/<[^>]+>/g, '');
+            // Decode HTML entities
+            cleaned = cleaned.replace(/&nbsp;/g, ' ');
+            cleaned = cleaned.replace(/&amp;/g, '&');
+            cleaned = cleaned.replace(/&lt;/g, '<');
+            cleaned = cleaned.replace(/&gt;/g, '>');
+            cleaned = cleaned.replace(/&quot;/g, '"');
+            cleaned = cleaned.replace(/&#39;/g, "'");
+            cleaned = cleaned.replace(/&[a-z]+;/gi, '');
+
+            // ===== 2. REMOVE EMAIL FORMATTING =====
+            // Remove email headers (From:, To:, Subject:, Date:)
+            cleaned = cleaned.replace(/^(From|To|Cc|Bcc|Subject|Date|Sent):.*$/gim, '');
+            // Remove email quoted replies (lines starting with > or |)
+            cleaned = cleaned.replace(/^[>|]+.*$/gm, '');
+            // Remove common email signatures
+            cleaned = cleaned.replace(/^--\s*$/gm, '');
+            cleaned = cleaned.replace(/^_{5,}$/gm, '');
+            cleaned = cleaned.replace(/^Sent from my (iPhone|iPad|Android|Galaxy)/gim, '');
+            cleaned = cleaned.replace(/^Get Outlook for (iOS|Android)/gim, '');
+            cleaned = cleaned.replace(/^This email and any attachments.*$/gim, '');
+
+            // ===== 3. REMOVE MARKDOWN & AI FORMATTING =====
+            // Remove markdown bold/italic markers
+            cleaned = cleaned.replace(/\*\*\*([^*]+)\*\*\*/g, '$1'); // ***bold italic***
+            cleaned = cleaned.replace(/\*\*([^*]+)\*\*/g, '$1');     // **bold**
+            cleaned = cleaned.replace(/\*([^*]+)\*/g, '$1');         // *italic*
+            cleaned = cleaned.replace(/__([^_]+)__/g, '$1');         // __bold__
+            cleaned = cleaned.replace(/_([^_]+)_/g, '$1');           // _italic_
+            // Remove markdown headers
+            cleaned = cleaned.replace(/^#{1,6}\s+/gm, '');
+            // Remove markdown code blocks
+            cleaned = cleaned.replace(/```[\s\S]*?```/g, '');
+            cleaned = cleaned.replace(/`([^`]+)`/g, '$1');
+            // Remove markdown links but keep text
+            cleaned = cleaned.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+            // Remove markdown lists
+            cleaned = cleaned.replace(/^[\s]*[-*+]\s+/gm, '');
+            cleaned = cleaned.replace(/^[\s]*\d+\.\s+/gm, '');
+
+            // ===== 4. REMOVE WORD/DOCS FORMATTING =====
+            // Remove excessive tabs and convert to single space
+            cleaned = cleaned.replace(/\t+/g, ' ');
+            // Remove bullet points and list markers
+            cleaned = cleaned.replace(/^[\s]*[•●○■□▪▫◆◇►▻]+[\s]*/gm, '');
+            cleaned = cleaned.replace(/^[\s]*[①②③④⑤⑥⑦⑧⑨⑩]+[\s]*/gm, '');
+            // Remove page numbers (common in Word docs)
+            cleaned = cleaned.replace(/^[\s]*Page \d+[\s]*$/gim, '');
+            cleaned = cleaned.replace(/^\d+[\s]*$/gm, '');
+
+            // ===== 5. REMOVE EXTRA SPACES =====
             const spacesBefore = (cleaned.match(/  +/g) || []).join('').length;
-            cleaned = cleaned.replace(/[ \t]+/g, ' ');
+            cleaned = cleaned.replace(/[ ]{2,}/g, ' ');
             spacesRemoved = spacesBefore;
 
-            // Fix line breaks - improved to handle uppercase/lowercase combinations
+            // ===== 6. FIX LINE BREAKS =====
             const beforeBreaks = cleaned;
-            // Fix breaks between: lowercase-lowercase, uppercase-lowercase, lowercase-uppercase
-            cleaned = cleaned.replace(/([a-zA-Z,;])\n([a-zA-Z])/g, '$1 $2');
-            breaksFixed = (beforeBreaks.match(/([a-zA-Z,;])\n([a-zA-Z])/g) || []).length;
+            // Fix breaks between words (handles uppercase/lowercase/punctuation)
+            cleaned = cleaned.replace(/([a-zA-Z,;:)])\n([a-zA-Z])/g, '$1 $2');
+            // Fix breaks after periods if next word is lowercase (not new sentence)
+            cleaned = cleaned.replace(/([.!?])\n([a-z])/g, '$1 $2');
+            breaksFixed = (beforeBreaks.match(/([a-zA-Z,;:)])\n([a-zA-Z])/g) || []).length;
 
-            // Remove invisible characters
-            cleaned = cleaned.replace(/[\u200B-\u200D\uFEFF]/g, '');
-            
-            // Convert smart quotes to regular quotes
-            cleaned = cleaned.replace(/['']/g, "'");
-            cleaned = cleaned.replace(/[""]/g, '"');
+            // ===== 7. CLEAN UP SPECIAL CHARACTERS =====
+            // Remove invisible characters (zero-width spaces, etc.)
+            cleaned = cleaned.replace(/[\u200B-\u200D\uFEFF\u00A0]/g, '');
+            // Remove soft hyphens
+            cleaned = cleaned.replace(/\u00AD/g, '');
+            // Remove control characters
+            cleaned = cleaned.replace(/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/g, '');
+
+            // ===== 8. CONVERT SMART QUOTES & PUNCTUATION =====
+            // Smart quotes to regular quotes
+            cleaned = cleaned.replace(/[''‚]/g, "'");
+            cleaned = cleaned.replace(/[""„]/g, '"');
+            // Fancy quotes
             cleaned = cleaned.replace(/[«»]/g, '"');
+            cleaned = cleaned.replace(/[‹›]/g, "'");
+            // Ellipsis
             cleaned = cleaned.replace(/…/g, '...');
-            
-            // Remove excessive line breaks (3+ becomes 2)
+            // Em/en dashes to regular dash
+            cleaned = cleaned.replace(/[—–]/g, '-');
+            // Trademark/copyright symbols (optional - can be removed if desired)
+            // cleaned = cleaned.replace(/[™®©]/g, '');
+
+            // ===== 9. REMOVE EXCESSIVE LINE BREAKS =====
+            // 3+ line breaks become 2 (paragraph spacing)
             cleaned = cleaned.replace(/\n{3,}/g, '\n\n');
-            
-            // Clean up spaces around line breaks
+            // Remove spaces around line breaks
             cleaned = cleaned.replace(/ +\n/g, '\n');
             cleaned = cleaned.replace(/\n +/g, '\n');
-            
+
+            // ===== 10. FINAL CLEANUP =====
+            // Remove leading/trailing whitespace
             cleaned = cleaned.trim();
+            // Ensure sentences have proper spacing after periods
+            cleaned = cleaned.replace(/\.([A-Z])/g, '. $1');
+            // Remove multiple spaces that might have been created
+            cleaned = cleaned.replace(/[ ]{2,}/g, ' ');
 
             const charsRemoved = originalLength - cleaned.length;
 
