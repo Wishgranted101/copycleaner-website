@@ -152,6 +152,7 @@
                 <h1 class="text-2xl font-bold text-gray-900">CopyCleaner.co</h1>
             </div>
             <div class="flex items-center gap-4">
+                <a href="/blog.html" class="hidden md:block text-gray-600 hover:text-gray-900 font-medium cursor-pointer">Blog</a>
                 <a href="#features" class="hidden md:block text-gray-600 hover:text-gray-900 font-medium cursor-pointer">Features</a>
                 <a href="#how-it-works" class="hidden md:block text-gray-600 hover:text-gray-900 font-medium cursor-pointer">How It Works</a>
                 <button onclick="showUpgradeModal()" class="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors font-medium">
@@ -573,7 +574,6 @@ Try copying text from a PDF or email!"
             <p class="text-center text-gray-600 text-sm mb-4">© 2025 CopyCleaner.co • Your text never leaves your browser • Built with privacy in mind</p>
             <div class="flex justify-center gap-6 flex-wrap text-sm mb-4">
                 <a href="/about.html" class="text-gray-600 hover:text-gray-900">About</a>
-                <a href="/blog.html" class="text-gray-600 hover:text-gray-900">Blog</a>
                 <a href="/privacy.html" class="text-gray-600 hover:text-gray-900">Privacy Policy</a>
                 <a href="/terms.html" class="text-gray-600 hover:text-gray-900">Terms of Service</a>
                 <a href="/refund.html" class="text-gray-600 hover:text-gray-900">Refund Policy</a>
@@ -882,6 +882,18 @@ properly    in    most    systems.`;
             
             localStorage.setItem('copycleaner_feedback', JSON.stringify(feedback));
             
+            // Google Form integration - Replace YOUR_FORM_ID and field IDs with actual values
+            const googleFormURL = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
+            const formData = new FormData();
+            formData.append('entry.YOUR_THUMBS_FIELD_ID', selectedFeedbackType);
+            formData.append('entry.YOUR_TEXT_FIELD_ID', feedbackText);
+            
+            fetch(googleFormURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            }).catch(() => {});
+            
             document.getElementById('feedbackWidget').classList.add('hidden');
             document.getElementById('feedbackThanks').classList.remove('hidden');
             
@@ -987,4 +999,4 @@ properly    in    most    systems.`;
         init();
     </script>
 </body>
-</html>48 2 2 6.
+</html>
