@@ -147,7 +147,6 @@
     <header class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center gap-2">
-                <!-- Logo size increased from h-10 to h-16 (64px height) -->
                 <img src="/copycleaner-logo.png" alt="CopyCleaner Logo" class="h-16 w-auto">
                 <h1 class="text-2xl font-bold text-gray-900">CopyCleaner.co</h1>
             </div>
@@ -332,10 +331,6 @@ Try copying text from a PDF or email!"
                                         Submit Feedback
                                     </button>
                                 </div>
-                            </div>
-                            
-                            <div id="feedbackThanks" class="hidden mt-3 text-center">
-                                <p class="text-sm text-green-600 font-semibold">✓ Thank you for your feedback!</p>
                             </div>
                         </div>
                     </div>
@@ -869,6 +864,7 @@ properly    in    most    systems.`;
 
             const feedbackText = document.getElementById('feedbackTextarea').value.trim();
             
+            // Save to localStorage
             const feedback = JSON.parse(localStorage.getItem('copycleaner_feedback') || '{"positive": 0, "negative": 0, "comments": []}');
             feedback[selectedFeedbackType]++;
             
@@ -882,11 +878,11 @@ properly    in    most    systems.`;
             
             localStorage.setItem('copycleaner_feedback', JSON.stringify(feedback));
             
-            // Google Form integration - Replace YOUR_FORM_ID and field IDs with actual values
-            const googleFormURL = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
+            // Submit to Google Forms
+            const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSetY_G84NeLkEqSVRiwP3kO6Bm-hJ617IDYxm1VGRsX-78u8A/formResponse';
             const formData = new FormData();
-            formData.append('entry.YOUR_THUMBS_FIELD_ID', selectedFeedbackType);
-            formData.append('entry.YOUR_TEXT_FIELD_ID', feedbackText);
+            formData.append('entry.2', selectedFeedbackType);
+            formData.append('entry.364116560', feedbackText);
             
             fetch(googleFormURL, {
                 method: 'POST',
@@ -894,8 +890,25 @@ properly    in    most    systems.`;
                 body: formData
             }).catch(() => {});
             
-            document.getElementById('feedbackWidget').classList.add('hidden');
-            document.getElementById('feedbackThanks').classList.remove('hidden');
+            // Hide the entire feedback widget section
+            const feedbackWidget = document.getElementById('feedbackWidget');
+            feedbackWidget.classList.add('hidden');
+            
+            // Show thank you message in the stats box (after the stats)
+            const statsBox = document.getElementById('statsBox');
+            const thankYouHTML = `
+                <div id="feedbackThanksMessage" class="mt-4 pt-4 border-t border-green-200 text-center fade-in-up">
+                    <div class="bg-green-50 rounded-lg p-4 border-2 border-green-200">
+                        <p class="text-green-600 font-bold text-lg mb-1">✓ Thank you for your feedback!</p>
+                        <p class="text-green-700 text-sm">Your input helps us improve CopyCleaner.</p>
+                    </div>
+                </div>
+            `;
+            
+            // Check if thank you message already exists, if not add it
+            if (!document.getElementById('feedbackThanksMessage')) {
+                statsBox.insertAdjacentHTML('beforeend', thankYouHTML);
+            }
             
             console.log('📊 CopyCleaner Feedback:', feedback);
         }
