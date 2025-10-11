@@ -675,18 +675,33 @@ properly    in    most    systems.`;
             let breaksFixed = 0;
             let originalLength = text.length;
 
+            // Remove extra spaces and tabs
             const spacesBefore = (cleaned.match(/  +/g) || []).join('').length;
             cleaned = cleaned.replace(/[ \t]+/g, ' ');
             spacesRemoved = spacesBefore;
 
+            // Fix line breaks - improved to handle uppercase/lowercase combinations
             const beforeBreaks = cleaned;
-            cleaned = cleaned.replace(/([a-z,])\n([a-z])/g, '$1 $2');
-            breaksFixed = (beforeBreaks.match(/([a-z,])\n([a-z])/g) || []).length;
+            // Fix breaks between: lowercase-lowercase, uppercase-lowercase, lowercase-uppercase
+            cleaned = cleaned.replace(/([a-zA-Z,;])\n([a-zA-Z])/g, '$1 $2');
+            breaksFixed = (beforeBreaks.match(/([a-zA-Z,;])\n([a-zA-Z])/g) || []).length;
 
+            // Remove invisible characters
             cleaned = cleaned.replace(/[\u200B-\u200D\uFEFF]/g, '');
+            
+            // Convert smart quotes to regular quotes
             cleaned = cleaned.replace(/['']/g, "'");
             cleaned = cleaned.replace(/[""]/g, '"');
+            cleaned = cleaned.replace(/[«»]/g, '"');
+            cleaned = cleaned.replace(/…/g, '...');
+            
+            // Remove excessive line breaks (3+ becomes 2)
             cleaned = cleaned.replace(/\n{3,}/g, '\n\n');
+            
+            // Clean up spaces around line breaks
+            cleaned = cleaned.replace(/ +\n/g, '\n');
+            cleaned = cleaned.replace(/\n +/g, '\n');
+            
             cleaned = cleaned.trim();
 
             const charsRemoved = originalLength - cleaned.length;
