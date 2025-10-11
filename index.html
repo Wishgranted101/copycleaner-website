@@ -152,9 +152,313 @@
                 <h1 class="text-2xl font-bold text-gray-900">CopyCleaner.co</h1>
             </div>
             <div class="flex items-center gap-4">
+                <a href="/blog.html" class="hidden md:block text-gray-600 hover:text-gray-900 font-medium cursor-pointer">Blog</a>
                 <a href="#features" class="hidden md:block text-gray-600 hover:text-gray-900 font-medium cursor-pointer">Features</a>
                 <a href="#how-it-works" class="hidden md:block text-gray-600 hover:text-gray-900 font-medium cursor-pointer">How It Works</a>
-                <button onclick="showUpgradeModal()" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all inline-flex items-center gap-2 btn-sparkle">
+                <button onclick="showUpgradeModal()" class="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors font-medium">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <span class="hidden sm:inline">Get Extension</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                The TinyPNG of Text Formatting
+            </h2>
+            <p class="text-xl md:text-2xl mb-8 opacity-95 max-w-3xl mx-auto">
+                Remove extra spaces, fix line breaks, and make your text look clean and professional — instantly.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button onclick="scrollToApp()" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 flex items-center gap-2">
+                    Try Free Now
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <button onclick="showUpgradeModal()" class="bg-indigo-800 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-indigo-900 transition-all border-2 border-white/30">
+                    Get Chrome Extension
+                </button>
+            </div>
+            <p class="mt-6 text-sm opacity-80">
+                ✓ No signup required • ✓ Privacy-first • ✓ Works offline
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Tool Section -->
+    <section id="app-tool" class="py-12 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-8">
+                <h3 class="text-3xl font-bold text-gray-900 mb-3">Try It Now - Paste Your Messy Text</h3>
+                <div class="flex gap-3 justify-center flex-wrap">
+                    <button onclick="loadDemo()" class="text-indigo-600 hover:text-indigo-700 font-semibold text-sm underline">
+                        📄 Load Short Demo
+                    </button>
+                    <button onclick="loadLargeDemo()" class="text-purple-600 hover:text-purple-700 font-semibold text-sm underline">
+                        📚 Load Large Demo (Real PDF Example)
+                    </button>
+                    <button id="resetBtn" onclick="resetDailyLimit()" class="text-green-600 hover:text-green-700 font-semibold text-sm underline hidden">
+                        🔄 Reset Daily Limit (Testing)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Usage Counter -->
+            <div id="usageCounter" class="text-center mb-6">
+                <p class="text-sm text-gray-500">
+                    Free uses today: <span id="usesLeft" class="font-semibold text-indigo-600">3 of 3 remaining</span>
+                </p>
+            </div>
+            <div id="limitReached" class="text-center mb-6 bg-red-50 border border-red-200 rounded-lg p-3 max-w-md mx-auto hidden">
+                <p class="text-sm text-red-600 font-semibold">
+                    ⚠️ Daily limit reached. Get the extension for unlimited cleans!
+                </p>
+            </div>
+
+            <!-- Tool Interface -->
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white rounded-xl shadow-lg border-2 border-gray-200 p-6 text-box-hover">
+                    <div class="flex items-center justify-between mb-3">
+                        <label class="text-sm font-semibold text-gray-700 flex items-center gap-2">
+                            <span class="text-red-500">📄</span> MESSY TEXT
+                        </label>
+                        <span id="charCount" class="text-xs text-gray-500">0/5,000</span>
+                    </div>
+                    <textarea
+                        id="inputText"
+                        placeholder="Paste your messy text here...
+
+Try copying text from a PDF or email!"
+                        class="w-full h-64 p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none font-mono text-sm"
+                    ></textarea>
+                    <button
+                        id="cleanBtn"
+                        onclick="handleClean()"
+                        class="w-full mt-4 bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all font-bold flex items-center justify-center gap-2 text-lg btn-pulse"
+                    >
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        Clean My Text ✨
+                    </button>
+                   
+                    <!-- Progress Bar -->
+                    <div id="progressContainer" class="mt-3 hidden">
+                        <div class="bg-gray-200 rounded-full overflow-hidden">
+                            <div id="progressBar"></div>
+                        </div>
+                        <div id="cleaningLoader" class="text-center mt-2 text-sm">
+                            ✨ Cleaning your text...
+                        </div>
+                    </div>
+                   
+                    <!-- Privacy Message -->
+                    <p class="text-center text-xs text-gray-500 mt-2">
+                        🔒 Your text never leaves your device — cleaning happens locally
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg border-2 border-gray-200 p-6 text-box-hover">
+                    <div class="flex items-center justify-between mb-3">
+                        <label class="text-sm font-semibold text-gray-700 flex items-center gap-2">
+                            <span class="text-green-500">✨</span> CLEAN TEXT
+                        </label>
+                        <button
+                            id="copyBtn"
+                            onclick="handleCopy()"
+                            class="text-sm bg-indigo-600 text-white px-3 py-1.5 rounded hover:bg-indigo-700 flex items-center gap-1 font-medium hidden"
+                        >
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            Copy
+                        </button>
+                    </div>
+                    <div id="outputText" class="w-full h-64 p-4 border-2 border-dashed border-gray-300 rounded-lg bg-gradient-to-br from-green-50 to-blue-50 overflow-auto font-mono text-sm whitespace-pre-wrap">
+                        <div class="text-gray-400 text-center mt-20">
+                            <p class="mb-2">👆 Click "Clean My Text" to see the magic!</p>
+                            <p class="text-xs">Watch messy text transform instantly</p>
+                        </div>
+                    </div>
+                   
+                    <div id="statsBox" class="mt-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-4 border border-indigo-200 hidden">
+                        <p class="text-sm font-semibold text-gray-700 mb-2">✅ Cleaning Results:</p>
+                        <div class="grid grid-cols-3 gap-2 text-center">
+                            <div class="bg-white rounded-lg p-2 border border-indigo-100">
+                                <p id="statSpaces" class="text-2xl font-bold text-indigo-600">0</p>
+                                <p class="text-xs text-gray-600">spaces</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-2 border border-purple-100">
+                                <p id="statBreaks" class="text-2xl font-bold text-purple-600">0</p>
+                                <p class="text-xs text-gray-600">breaks</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-2 border border-pink-100">
+                                <p id="statChars" class="text-2xl font-bold text-pink-600">0</p>
+                                <p class="text-xs text-gray-600">cleaned</p>
+                            </div>
+                        </div>
+
+                        <!-- Feedback Widget -->
+                        <div id="feedbackWidget" class="mt-4 pt-4 border-t border-indigo-200">
+                            <p class="text-sm font-semibold text-gray-700 mb-2 text-center">Was this tool helpful?</p>
+                            <div class="flex gap-3 justify-center">
+                                <button onclick="selectFeedback('positive')" id="thumbsUpBtn" class="flex items-center gap-2 px-4 py-2 bg-green-50 hover:bg-green-100 border-2 border-green-200 rounded-lg transition-all">
+                                    <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"></path>
+                                    </svg>
+                                    <span class="text-sm font-medium text-green-700">Yes</span>
+                                </button>
+                                <button onclick="selectFeedback('negative')" id="thumbsDownBtn" class="flex items-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 border-2 border-red-200 rounded-lg transition-all">
+                                    <svg class="w-5 h-5 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M18 9.5a1.5 1.5 0 11-3 0v-6a1.5 1.5 0 013 0v6zM14 9.667v-5.43a2 2 0 00-1.105-1.79l-.05-.025A4 4 0 0011.055 2H5.64a2 2 0 00-1.962 1.608l-1.2 6A2 2 0 004.44 12H8v4a2 2 0 002 2 1 1 0 001-1v-.667a4 4 0 01.8-2.4l1.4-1.866a4 4 0 00.8-2.4z"></path>
+                                    </svg>
+                                    <span class="text-sm font-medium text-red-700">No</span>
+                                </button>
+                            </div>
+                            
+                            <!-- Feedback Text Box -->
+                            <div id="feedbackTextBox" class="hidden mt-4">
+                                <label class="text-xs text-gray-600 mb-1 block">Tell us more (optional):</label>
+                                <textarea 
+                                    id="feedbackTextarea" 
+                                    maxlength="200" 
+                                    placeholder="What did you like or what could be improved?"
+                                    class="w-full p-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none"
+                                    rows="3"
+                                ></textarea>
+                                <div class="flex items-center justify-between mt-2">
+                                    <span id="feedbackCharCount" class="text-xs text-gray-500">0/200</span>
+                                    <button 
+                                        onclick="submitFeedback()" 
+                                        class="bg-indigo-600 text-white px-4 py-1.5 rounded-lg text-xs font-semibold hover:bg-indigo-700 transition-colors"
+                                    >
+                                        Submit Feedback
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div id="feedbackThanks" class="hidden mt-3 text-center">
+                                <p class="text-sm text-green-600 font-semibold">✓ Thank you for your feedback!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Before/After Example -->
+            <div class="bg-white rounded-xl shadow-lg border-2 border-indigo-200 p-8">
+                <h4 class="text-2xl font-bold text-gray-900 mb-6 text-center">Why CopyCleaner > Cmd+Shift+V</h4>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-2xl">❌</span>
+                            <p class="text-sm font-bold text-red-600">Cmd+Shift+V doesn't fix this</p>
+                        </div>
+                        <div class="bg-red-50 border-2 border-red-300 rounded-lg p-4 font-mono text-sm">
+                            <span class="text-red-700">This    is   badly<br>spaced    text from<br>a    PDF   document</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-2xl">✅</span>
+                            <p class="text-sm font-bold text-green-600">CopyCleaner fixes it perfectly</p>
+                        </div>
+                        <div class="bg-green-50 border-2 border-green-300 rounded-lg p-4 font-mono text-sm">
+                            <span class="text-green-700">This is badly spaced text from a PDF document</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center mb-12 text-gray-900">What CopyCleaner Fixes</h3>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
+                    <div class="text-4xl mb-4">🤖</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">AI Text Formatting</h4>
+                    <p class="text-gray-600">Fix messy text copied from ChatGPT, Claude, Jasper, and other AI tools. Removes hidden spaces, weird quotes, and markdown junk in one click.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
+                    <div class="text-4xl mb-4">📄</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">PDF Text Problems</h4>
+                    <p class="text-gray-600">Turn broken PDF text into clean, readable paragraphs. No more random line breaks or missing spaces.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
+                    <div class="text-4xl mb-4">📧</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">Email Formatting</h4>
+                    <p class="text-gray-600">Erase messy email threads, quoted replies, and signatures. Get plain, professional text instantly.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
+                    <div class="text-4xl mb-4">🌐</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">Web Content</h4>
+                    <p class="text-gray-600">Strip out HTML tags, inline styles, and web markup. Perfect for pasting clean text into blogs, CMS, or Notion.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
+                    <div class="text-4xl mb-4">📝</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">Word & Docs Formatting</h4>
+                    <p class="text-gray-600">Fix Word and Google Docs text that breaks when pasted. Removes font styles, list indents, and invisible code.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
+                    <div class="text-4xl mb-4">💼</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">Resume & Document Cleanup</h4>
+                    <p class="text-gray-600">Make your resume, cover letter, or report look clean again. No tabs, no weird spacing—just polished text.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
+                    <div class="text-4xl mb-4">💬</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">Smart Quotes</h4>
+                    <p class="text-gray-600">Converts curly quotes and apostrophes to regular ones for consistent formatting.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">Extra Spaces & Breaks</h4>
+                    <p class="text-gray-600">Removes multiple spaces, tabs, invisible characters, and awkward line breaks instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h3 class="text-4xl font-bold mb-12 text-gray-900">How It Works</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">Paste Text</h4>
+                    <p class="text-gray-600">Copy messy text from anywhere and paste it into CopyCleaner</p>
+                </div>
+                <div>
+                    <div class="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">Click Clean</h4>
+                    <p class="text-gray-600">Our tool instantly analyzes and fixes all formatting issues</p>
+                </div>
+                <div>
+                    <div class="w-16 h-16 bg-pink-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+                    <h4 class="text-xl font-bold mb-2 text-gray-900">Copy Result</h4>
+                    <p class="text-gray-600">Get perfectly formatted text ready to use anywhere</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center mb-12 text-gray-900">Frequently Asked Questions</h3>
+            <div class="space-y-4" id="faqSection"></div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h3 class="text-4xl font-bold mb-6">Ready for Unlimited Cleaning?</h3>
+            <p class="text-xl mb-8 opacity-95">
+                Get the browser extension for unlimited cleans, paste history, and keyboard shortcuts
+            </p>
+            <button onclick="showUpgradeModal()" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all inline-flex items-center gap-2 btn-sparkle">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
                 Install Chrome Extension - $4.99/mo
             </button>
@@ -270,7 +574,6 @@
             <p class="text-center text-gray-600 text-sm mb-4">© 2025 CopyCleaner.co • Your text never leaves your browser • Built with privacy in mind</p>
             <div class="flex justify-center gap-6 flex-wrap text-sm mb-4">
                 <a href="/about.html" class="text-gray-600 hover:text-gray-900">About</a>
-                <a href="/blog.html" class="text-gray-600 hover:text-gray-900">Blog</a>
                 <a href="/privacy.html" class="text-gray-600 hover:text-gray-900">Privacy Policy</a>
                 <a href="/terms.html" class="text-gray-600 hover:text-gray-900">Terms of Service</a>
                 <a href="/refund.html" class="text-gray-600 hover:text-gray-900">Refund Policy</a>
@@ -579,6 +882,18 @@ properly    in    most    systems.`;
             
             localStorage.setItem('copycleaner_feedback', JSON.stringify(feedback));
             
+            // Google Form integration - Replace YOUR_FORM_ID and field IDs with actual values
+            const googleFormURL = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
+            const formData = new FormData();
+            formData.append('entry.YOUR_THUMBS_FIELD_ID', selectedFeedbackType);
+            formData.append('entry.YOUR_TEXT_FIELD_ID', feedbackText);
+            
+            fetch(googleFormURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            }).catch(() => {});
+            
             document.getElementById('feedbackWidget').classList.add('hidden');
             document.getElementById('feedbackThanks').classList.remove('hidden');
             
@@ -649,307 +964,39 @@ properly    in    most    systems.`;
                 icon.style.transform = 'rotate(180deg)';
             } else {
                 answer.classList.add('hidden');
-                Modal()" class="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors font-medium">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <span class="hidden sm:inline">Get Extension</span>
-                </button>
-            </div>
-        </div>
-    </header>
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <h2 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                The TinyPNG of Text Formatting
-            </h2>
-            <p class="text-xl md:text-2xl mb-8 opacity-95 max-w-3xl mx-auto">
-                Remove extra spaces, fix line breaks, and make your text look clean and professional — instantly.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button onclick="scrollToApp()" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 flex items-center gap-2">
-                    Try Free Now
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                <button onclick="showUpgradeModal()" class="bg-indigo-800 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-indigo-900 transition-all border-2 border-white/30">
-                    Get Chrome Extension
-                </button>
-            </div>
-            <p class="mt-6 text-sm opacity-80">
-                ✓ No signup required • ✓ Privacy-first • ✓ Works offline
-            </p>
-        </div>
-    </section>
+        function shareWebsite() {
+            const shareData = {
+                title: 'CopyCleaner - Clean Messy Text Instantly',
+                text: 'Check out CopyCleaner! It fixes messy text from PDFs, emails, and AI tools in one click.',
+                url: window.location.href
+            };
 
-    <!-- Main Tool Section -->
-    <section id="app-tool" class="py-12 bg-white">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center mb-8">
-                <h3 class="text-3xl font-bold text-gray-900 mb-3">Try It Now - Paste Your Messy Text</h3>
-                <div class="flex gap-3 justify-center flex-wrap">
-                    <button onclick="loadDemo()" class="text-indigo-600 hover:text-indigo-700 font-semibold text-sm underline">
-                        📄 Load Short Demo
-                    </button>
-                    <button onclick="loadLargeDemo()" class="text-purple-600 hover:text-purple-700 font-semibold text-sm underline">
-                        📚 Load Large Demo (Real PDF Example)
-                    </button>
-                    <button id="resetBtn" onclick="resetDailyLimit()" class="text-green-600 hover:text-green-700 font-semibold text-sm underline hidden">
-                        🔄 Reset Daily Limit (Testing)
-                    </button>
-                </div>
-            </div>
+            if (navigator.share) {
+                navigator.share(shareData).catch(() => {
+                    copyToClipboard(window.location.href);
+                    alert('Link copied to clipboard! Share it with your friends.');
+                });
+            } else {
+                copyToClipboard(window.location.href);
+                alert('Link copied to clipboard! Share it with your friends.');
+            }
+        }
 
-            <!-- Usage Counter -->
-            <div id="usageCounter" class="text-center mb-6">
-                <p class="text-sm text-gray-500">
-                    Free uses today: <span id="usesLeft" class="font-semibold text-indigo-600">3 of 3 remaining</span>
-                </p>
-            </div>
-            <div id="limitReached" class="text-center mb-6 bg-red-50 border border-red-200 rounded-lg p-3 max-w-md mx-auto hidden">
-                <p class="text-sm text-red-600 font-semibold">
-                    ⚠️ Daily limit reached. Get the extension for unlimited cleans!
-                </p>
-            </div>
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+        }
 
-            <!-- Tool Interface -->
-            <div class="grid md:grid-cols-2 gap-6 mb-8">
-                <div class="bg-white rounded-xl shadow-lg border-2 border-gray-200 p-6 text-box-hover">
-                    <div class="flex items-center justify-between mb-3">
-                        <label class="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                            <span class="text-red-500">📄</span> MESSY TEXT
-                        </label>
-                        <span id="charCount" class="text-xs text-gray-500">0/5,000</span>
-                    </div>
-                    <textarea
-                        id="inputText"
-                        placeholder="Paste your messy text here...
-
-Try copying text from a PDF or email!"
-                        class="w-full h-64 p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none font-mono text-sm"
-                    ></textarea>
-                    <button
-                        id="cleanBtn"
-                        onclick="handleClean()"
-                        class="w-full mt-4 bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all font-bold flex items-center justify-center gap-2 text-lg btn-pulse"
-                    >
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        Clean My Text ✨
-                    </button>
-                   
-                    <!-- Progress Bar -->
-                    <div id="progressContainer" class="mt-3 hidden">
-                        <div class="bg-gray-200 rounded-full overflow-hidden">
-                            <div id="progressBar"></div>
-                        </div>
-                        <div id="cleaningLoader" class="text-center mt-2 text-sm">
-                            ✨ Cleaning your text...
-                        </div>
-                    </div>
-                   
-                    <!-- Privacy Message -->
-                    <p class="text-center text-xs text-gray-500 mt-2">
-                        🔒 Your text never leaves your device — cleaning happens locally
-                    </p>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-lg border-2 border-gray-200 p-6 text-box-hover">
-                    <div class="flex items-center justify-between mb-3">
-                        <label class="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                            <span class="text-green-500">✨</span> CLEAN TEXT
-                        </label>
-                        <button
-                            id="copyBtn"
-                            onclick="handleCopy()"
-                            class="text-sm bg-indigo-600 text-white px-3 py-1.5 rounded hover:bg-indigo-700 flex items-center gap-1 font-medium hidden"
-                        >
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                            Copy
-                        </button>
-                    </div>
-                    <div id="outputText" class="w-full h-64 p-4 border-2 border-dashed border-gray-300 rounded-lg bg-gradient-to-br from-green-50 to-blue-50 overflow-auto font-mono text-sm whitespace-pre-wrap">
-                        <div class="text-gray-400 text-center mt-20">
-                            <p class="mb-2">👆 Click "Clean My Text" to see the magic!</p>
-                            <p class="text-xs">Watch messy text transform instantly</p>
-                        </div>
-                    </div>
-                   
-                    <div id="statsBox" class="mt-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-4 border border-indigo-200 hidden">
-                        <p class="text-sm font-semibold text-gray-700 mb-2">✅ Cleaning Results:</p>
-                        <div class="grid grid-cols-3 gap-2 text-center">
-                            <div class="bg-white rounded-lg p-2 border border-indigo-100">
-                                <p id="statSpaces" class="text-2xl font-bold text-indigo-600">0</p>
-                                <p class="text-xs text-gray-600">spaces</p>
-                            </div>
-                            <div class="bg-white rounded-lg p-2 border border-purple-100">
-                                <p id="statBreaks" class="text-2xl font-bold text-purple-600">0</p>
-                                <p class="text-xs text-gray-600">breaks</p>
-                            </div>
-                            <div class="bg-white rounded-lg p-2 border border-pink-100">
-                                <p id="statChars" class="text-2xl font-bold text-pink-600">0</p>
-                                <p class="text-xs text-gray-600">cleaned</p>
-                            </div>
-                        </div>
-
-                        <!-- Feedback Widget -->
-                        <div id="feedbackWidget" class="mt-4 pt-4 border-t border-indigo-200">
-                            <p class="text-sm font-semibold text-gray-700 mb-2 text-center">Was this tool helpful?</p>
-                            <div class="flex gap-3 justify-center">
-                                <button onclick="selectFeedback('positive')" id="thumbsUpBtn" class="flex items-center gap-2 px-4 py-2 bg-green-50 hover:bg-green-100 border-2 border-green-200 rounded-lg transition-all">
-                                    <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"></path>
-                                    </svg>
-                                    <span class="text-sm font-medium text-green-700">Yes</span>
-                                </button>
-                                <button onclick="selectFeedback('negative')" id="thumbsDownBtn" class="flex items-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 border-2 border-red-200 rounded-lg transition-all">
-                                    <svg class="w-5 h-5 text-red-600" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M18 9.5a1.5 1.5 0 11-3 0v-6a1.5 1.5 0 013 0v6zM14 9.667v-5.43a2 2 0 00-1.105-1.79l-.05-.025A4 4 0 0011.055 2H5.64a2 2 0 00-1.962 1.608l-1.2 6A2 2 0 004.44 12H8v4a2 2 0 002 2 1 1 0 001-1v-.667a4 4 0 01.8-2.4l1.4-1.866a4 4 0 00.8-2.4z"></path>
-                                    </svg>
-                                    <span class="text-sm font-medium text-red-700">No</span>
-                                </button>
-                            </div>
-                            
-                            <!-- Feedback Text Box -->
-                            <div id="feedbackTextBox" class="hidden mt-4">
-                                <label class="text-xs text-gray-600 mb-1 block">Tell us more (optional):</label>
-                                <textarea 
-                                    id="feedbackTextarea" 
-                                    maxlength="200" 
-                                    placeholder="What did you like or what could be improved?"
-                                    class="w-full p-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none"
-                                    rows="3"
-                                ></textarea>
-                                <div class="flex items-center justify-between mt-2">
-                                    <span id="feedbackCharCount" class="text-xs text-gray-500">0/200</span>
-                                    <button 
-                                        onclick="submitFeedback()" 
-                                        class="bg-indigo-600 text-white px-4 py-1.5 rounded-lg text-xs font-semibold hover:bg-indigo-700 transition-colors"
-                                    >
-                                        Submit Feedback
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <div id="feedbackThanks" class="hidden mt-3 text-center">
-                                <p class="text-sm text-green-600 font-semibold">✓ Thank you for your feedback!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Before/After Example -->
-            <div class="bg-white rounded-xl shadow-lg border-2 border-indigo-200 p-8">
-                <h4 class="text-2xl font-bold text-gray-900 mb-6 text-center">Why CopyCleaner > Cmd+Shift+V</h4>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-2xl">❌</span>
-                            <p class="text-sm font-bold text-red-600">Cmd+Shift+V doesn't fix this</p>
-                        </div>
-                        <div class="bg-red-50 border-2 border-red-300 rounded-lg p-4 font-mono text-sm">
-                            <span class="text-red-700">This    is   badly<br>spaced    text from<br>a    PDF   document</span>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="text-2xl">✅</span>
-                            <p class="text-sm font-bold text-green-600">CopyCleaner fixes it perfectly</p>
-                        </div>
-                        <div class="bg-green-50 border-2 border-green-300 rounded-lg p-4 font-mono text-sm">
-                            <span class="text-green-700">This is badly spaced text from a PDF document</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="py-20 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4">
-            <h3 class="text-4xl font-bold text-center mb-12 text-gray-900">What CopyCleaner Fixes</h3>
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
-                    <div class="text-4xl mb-4">🤖</div>
-                    <h4 class="text-xl font-bold mb-2 text-gray-900">AI Text Formatting</h4>
-                    <p class="text-gray-600">Fix messy text copied from ChatGPT, Claude, Jasper, and other AI tools. Removes hidden spaces, weird quotes, and markdown junk in one click.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
-                    <div class="text-4xl mb-4">📄</div>
-                    <h4 class="text-xl font-bold mb-2 text-gray-900">PDF Text Problems</h4>
-                    <p class="text-gray-600">Turn broken PDF text into clean, readable paragraphs. No more random line breaks or missing spaces.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
-                    <div class="text-4xl mb-4">📧</div>
-                    <h4 class="text-xl font-bold mb-2 text-gray-900">Email Formatting</h4>
-                    <p class="text-gray-600">Erase messy email threads, quoted replies, and signatures. Get plain, professional text instantly.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
-                    <div class="text-4xl mb-4">🌐</div>
-                    <h4 class="text-xl font-bold mb-2 text-gray-900">Web Content</h4>
-                    <p class="text-gray-600">Strip out HTML tags, inline styles, and web markup. Perfect for pasting clean text into blogs, CMS, or Notion.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
-                    <div class="text-4xl mb-4">📝</div>
-                    <h4 class="text-xl font-bold mb-2 text-gray-900">Word & Docs Formatting</h4>
-                    <p class="text-gray-600">Fix Word and Google Docs text that breaks when pasted. Removes font styles, list indents, and invisible code.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
-                    <div class="text-4xl mb-4">💼</div>
-                    <h4 class="text-xl font-bold mb-2 text-gray-900">Resume & Document Cleanup</h4>
-                    <p class="text-gray-600">Make your resume, cover letter, or report look clean again. No tabs, no weird spacing—just polished text.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
-                    <div class="text-4xl mb-4">💬</div>
-                    <h4 class="text-xl font-bold mb-2 text-gray-900">Smart Quotes</h4>
-                    <p class="text-gray-600">Converts curly quotes and apostrophes to regular ones for consistent formatting.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md hover-lift">
-                    <div class="text-4xl mb-4">⚡</div>
-                    <h4 class="text-xl font-bold mb-2 text-gray-900">Extra Spaces & Breaks</h4>
-                    <p class="text-gray-600">Removes multiple spaces, tabs, invisible characters, and awkward line breaks instantly.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section id="how-it-works" class="py-20 bg-white">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h3 class="text-4xl font-bold mb-12 text-gray-900">How It Works</h3>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div>
-                    <div class="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
-                    <h4 class="text-xl font-bold mb-2 text-gray-900">Paste Text</h4>
-                    <p class="text-gray-600">Copy messy text from anywhere and paste it into CopyCleaner</p>
-                </div>
-                <div>
-                    <div class="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
-                    <h4 class="text-xl font-bold mb-2 text-gray-900">Click Clean</h4>
-                    <p class="text-gray-600">Our tool instantly analyzes and fixes all formatting issues</p>
-                </div>
-                <div>
-                    <div class="w-16 h-16 bg-pink-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
-                    <h4 class="text-xl font-bold mb-2 text-gray-900">Copy Result</h4>
-                    <p class="text-gray-600">Get perfectly formatted text ready to use anywhere</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-4xl mx-auto px-4">
-            <h3 class="text-4xl font-bold text-center mb-12 text-gray-900">Frequently Asked Questions</h3>
-            <div class="space-y-4" id="faqSection"></div>
-        </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-center">
-        <div class="max-w-4xl mx-auto px-4">
-            <h3 class="text-4xl font-bold mb-6">Ready for Unlimited Cleaning?</h3>
-            <p class="text-xl mb-8 opacity-95">
-                Get the browser extension for unlimited cleans, paste history, and keyboard shortcuts
-            </p>
-            <button onclick="showUpgrade
+        // Initialize on page load
+        init();
+    </script>
+</body>
+</html>
