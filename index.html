@@ -1022,12 +1022,12 @@ properly    in    most    systems.`;
             }
 
             // TODO: Replace these with your actual Google Form IDs after creating the form
-            const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSdERdjO7nOlfeZ_4bPXK5BgyelVUEhQkmadK_DYcwkOqw5_5Q/formResponse';
+            const googleFormURL = 
             const formData = new FormData();
             formData.append('entry.1410527887', email);
             formData.append('entry.1025819786', browser);
 
-            fetch(googleFormURL, {
+            fetch(googleFormURL, { 'https://docs.google.com/forms/d/e/1FAIpQLSdERdjO7nOlfeZ_4bPXK5BgyelVUEhQkmadK_DYcwkOqw5_5Q/formResponse', {
                 method: 'POST',
                 mode: 'no-cors',
                 body: formData
