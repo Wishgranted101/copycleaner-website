@@ -1021,11 +1021,11 @@ properly    in    most    systems.`;
                 return;
             }
 
-            // TODO: Replace these with your actual Google Form IDs after creating the form
+            // Submit to Google Forms - WAITLIST FORM
             const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSdERdjO7nOlfeZ_4bPXK5BgyelVUEhQkmadK_DYcwkOqw5_5Q/formResponse';
             const formData = new FormData();
-            formData.append('entry.1418527887', email);
-            formData.append('entry.1025819786', browser);
+            formData.append('entry.1418527887', email); // Email field
+            formData.append('entry.1025819786', browser); // Browser field
 
             fetch(googleFormURL, {
                 method: 'POST',
@@ -1099,13 +1099,11 @@ properly    in    most    systems.`;
             
             localStorage.setItem('copycleaner_feedback', JSON.stringify(feedback));
             
-            // Submit to Google Forms
+            // Submit to Google Forms - FEEDBACK FORM
             const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSetY_G84NeLkEqSVRiwP3kO6Bm-hJ617IDYxm1VGRsX-78u8A/formResponse';
             const formData = new FormData();
-            // Feedback type (e.g. thumbs up / down)
-            formData.append('entry.364116560', selectedFeedbackType);
-           // Feedback text (user’s written comment)
-            formData.append('entry.1920954984', feedbackText);
+            formData.append('entry.364116560', selectedFeedbackType); // Thumbs up/down field
+            formData.append('entry.1920954984', feedbackText); // Comments field
             
             fetch(googleFormURL, {
                 method: 'POST',
@@ -1145,19 +1143,15 @@ properly    in    most    systems.`;
                 },
                 {
                     q: "Does it work with ChatGPT and AI text?",
-                    a: "Absolutely! CopyCleaner is ideal for cleaning up messy output from ChatGPT, Claude, Jasper, or any other AI tool. It removes markdown formatting, weird spacing, and makes AI text look natural and professional."
-                },
-                 {
-                    q: "Why did my HTML/code get removed?",
-                    a: "CopyCleaner removes HTML tags by design to give you clean, plain text. This is one of our core features for cleaning web content. If you need to work with code, use a code editor instead."
+                    a: "Absolutely! CopyCleaner is perfect for cleaning messy output from ChatGPT, Claude, Jasper, or any AI tool. It removes markdown formatting, weird spacing, and makes AI text look natural and professional."
                 },
                 {
                     q: "Does my text get sent to a server?",
-                    a: "No! All text cleaning happens in your browser. Your text never leaves your device, ensuring complete privacy and security. We don't see, store, or transmit your content."
+                    a: "No! All text cleaning happens in your browser. Your text never leaves your device, ensuring complete privacy. We don't see, store, or transmit your content."
                 },
                 {
                     q: "What browsers are supported?",
-                    a: "The web app works in all modern browsers. The extension will be available for Chrome and Firefox."
+                    a: "The web app works in all modern browsers. The extension will be available for Chrome and Firefox - join the waitlist to get notified when it launches!"
                 },
                 {
                     q: "What's included in the browser extension?",
@@ -1169,7 +1163,7 @@ properly    in    most    systems.`;
                 },
                 {
                     q: "When will the extension launch?",
-                    a: "We're working hard on it! Join the waitlist to be the first to know."
+                    a: "We're working hard on it! Join the waitlist to be the first to know when it's ready, and you'll get 3 months FREE when it launches."
                 }
             ];
 
