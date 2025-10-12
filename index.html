@@ -784,7 +784,7 @@ properly    in    most    systems.`;
             let breaksFixed = 0;
             let originalLength = text.length;
 
-            // ===== 1. REMOVE HTML TAGS & WEB CONTENT =====
+            // Remove HTML tags & web content
             cleaned = cleaned.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '');
             cleaned = cleaned.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
             cleaned = cleaned.replace(/<[^>]+>/g, '');
@@ -796,7 +796,7 @@ properly    in    most    systems.`;
             cleaned = cleaned.replace(/&#39;/g, "'");
             cleaned = cleaned.replace(/&[a-z]+;/gi, '');
 
-            // ===== 2. REMOVE EMAIL FORMATTING =====
+            // Remove email formatting
             cleaned = cleaned.replace(/^(From|To|Cc|Bcc|Subject|Date|Sent):.*$/gim, '');
             cleaned = cleaned.replace(/^[>|]+.*$/gm, '');
             cleaned = cleaned.replace(/^--\s*$/gm, '');
@@ -805,7 +805,7 @@ properly    in    most    systems.`;
             cleaned = cleaned.replace(/^Get Outlook for (iOS|Android)/gim, '');
             cleaned = cleaned.replace(/^This email and any attachments.*$/gim, '');
 
-            // ===== 3. REMOVE MARKDOWN & AI FORMATTING =====
+            // Remove markdown & AI formatting
             cleaned = cleaned.replace(/\*\*\*([^*]+)\*\*\*/g, '$1');
             cleaned = cleaned.replace(/\*\*([^*]+)\*\*/g, '$1');
             cleaned = cleaned.replace(/\*([^*]+)\*/g, '$1');
@@ -818,30 +818,30 @@ properly    in    most    systems.`;
             cleaned = cleaned.replace(/^[\s]*[-*+]\s+/gm, '');
             cleaned = cleaned.replace(/^[\s]*\d+\.\s+/gm, '');
 
-            // ===== 4. REMOVE WORD/DOCS FORMATTING =====
+            // Remove Word/Docs formatting
             cleaned = cleaned.replace(/\t+/g, ' ');
             cleaned = cleaned.replace(/^[\s]*[•●○■□▪▫◆◇►▻]+[\s]*/gm, '');
             cleaned = cleaned.replace(/^[\s]*[①②③④⑤⑥⑦⑧⑨⑩]+[\s]*/gm, '');
             cleaned = cleaned.replace(/^[\s]*Page \d+[\s]*$/gim, '');
             cleaned = cleaned.replace(/^\d+[\s]*$/gm, '');
 
-            // ===== 5. REMOVE EXTRA SPACES =====
+            // Remove extra spaces
             const spacesBefore = (cleaned.match(/  +/g) || []).join('').length;
             cleaned = cleaned.replace(/[ ]{2,}/g, ' ');
             spacesRemoved = spacesBefore;
 
-            // ===== 6. FIX LINE BREAKS =====
+            // Fix line breaks
             const beforeBreaks = cleaned;
             cleaned = cleaned.replace(/([a-zA-Z,;:)])\n([a-zA-Z])/g, '$1 $2');
             cleaned = cleaned.replace(/([.!?])\n([a-z])/g, '$1 $2');
             breaksFixed = (beforeBreaks.match(/([a-zA-Z,;:)])\n([a-zA-Z])/g) || []).length;
 
-            // ===== 7. CLEAN UP SPECIAL CHARACTERS =====
+            // Clean up special characters
             cleaned = cleaned.replace(/[\u200B-\u200D\uFEFF\u00A0]/g, '');
             cleaned = cleaned.replace(/\u00AD/g, '');
             cleaned = cleaned.replace(/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/g, '');
 
-            // ===== 8. CONVERT SMART QUOTES & PUNCTUATION =====
+            // Convert smart quotes & punctuation
             cleaned = cleaned.replace(/[''‚]/g, "'");
             cleaned = cleaned.replace(/[""„]/g, '"');
             cleaned = cleaned.replace(/[«»]/g, '"');
@@ -849,12 +849,12 @@ properly    in    most    systems.`;
             cleaned = cleaned.replace(/…/g, '...');
             cleaned = cleaned.replace(/[—–]/g, '-');
 
-            // ===== 9. REMOVE EXCESSIVE LINE BREAKS =====
+            // Remove excessive line breaks
             cleaned = cleaned.replace(/\n{3,}/g, '\n\n');
             cleaned = cleaned.replace(/ +\n/g, '\n');
             cleaned = cleaned.replace(/\n +/g, '\n');
 
-            // ===== 10. FINAL CLEANUP =====
+            // Final cleanup
             cleaned = cleaned.trim();
             cleaned = cleaned.replace(/\.([A-Z])/g, '. $1');
             cleaned = cleaned.replace(/[ ]{2,}/g, ' ');
@@ -1012,6 +1012,16 @@ properly    in    most    systems.`;
             document.getElementById('dailyLimitModal').classList.add('hidden');
         }
 
+        function handleModalBackdropClick(event, modalId) {
+            if (event.target.id === modalId || event.target.id === 'waitlistModal') {
+                if (modalId === 'dailyLimitModal') {
+                    hideDailyLimitModal();
+                } else {
+                    hideWaitlistModal();
+                }
+            }
+        }
+
         function submitWaitlist() {
             const email = document.getElementById('waitlistEmail').value;
             const browser = document.querySelector('input[name="browser"]:checked')?.value;
@@ -1021,10 +1031,10 @@ properly    in    most    systems.`;
                 return;
             }
 
-            // Submit to Google Forms - WAITLIST FORM
+            // FIXED: Submit to Google Forms - WAITLIST FORM with correct entry IDs
             const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSdERdjO7nOlfeZ_4bPXK5BgyelVUEhQkmadK_DYcwkOqw5_5Q/formResponse';
             const formData = new FormData();
-            formData.append('entry.1410527887', email); // Email field
+            formData.append('entry.1418527887', email); // FIXED: Correct email field ID
             formData.append('entry.1025819786', browser); // Browser field
 
             fetch(googleFormURL, {
@@ -1062,7 +1072,8 @@ properly    in    most    systems.`;
         }
 
         function selectFeedback(type) {
-            selectedFeedbackType = type;
+            // FIXED: Capitalize the feedback type to match Google Form exactly
+            selectedFeedbackType = type.charAt(0).toUpperCase() + type.slice(1); // "positive" -> "Positive"
             
             const upBtn = document.getElementById('thumbsUpBtn');
             const downBtn = document.getElementById('thumbsDownBtn');
@@ -1087,7 +1098,7 @@ properly    in    most    systems.`;
             const feedbackText = document.getElementById('feedbackTextarea').value.trim();
             
             const feedback = JSON.parse(localStorage.getItem('copycleaner_feedback') || '{"positive": 0, "negative": 0, "comments": []}');
-            feedback[selectedFeedbackType]++;
+            feedback[selectedFeedbackType.toLowerCase()]++;
             
             if (feedbackText) {
                 feedback.comments.push({
@@ -1099,11 +1110,11 @@ properly    in    most    systems.`;
             
             localStorage.setItem('copycleaner_feedback', JSON.stringify(feedback));
             
-            // Submit to Google Forms - FEEDBACK FORM
+            // FIXED: Submit to Google Forms - FEEDBACK FORM with correct entry IDs
             const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSetY_G84NeLkEqSVRiwP3kO6Bm-hJ617IDYxm1VGRsX-78u8A/formResponse';
             const formData = new FormData();
-            formData.append('entry.364116560', selectedFeedbackType); // Thumbs up/down field
-            formData.append('entry.1990954984', feedbackText); // Comments field
+            formData.append('entry.364116560', selectedFeedbackType); // FIXED: Feedback type (Positive/Negative)
+            formData.append('entry.1990954984', feedbackText); // FIXED: Comments field (changed from 1920954984)
             
             fetch(googleFormURL, {
                 method: 'POST',
