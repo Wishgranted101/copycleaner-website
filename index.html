@@ -1102,8 +1102,11 @@ properly    in    most    systems.`;
             // Submit to Google Forms
             const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSetY_G84NeLkEqSVRiwP3kO6Bm-hJ617IDYxm1VGRsX-78u8A/formResponse';
             const formData = new FormData();
-            formData.append('entry.2', selectedFeedbackType);
-            formData.append('entry.364116560', feedbackText);
+            // Feedback type (e.g. thumbs up / down)
+            formData.append('entry.364116560', selectedFeedbackType);
+
+           // Feedback text (user’s written comment)
+            formData.append('entry.1990954984', feedbackText);
             
             fetch(googleFormURL, {
                 method: 'POST',
