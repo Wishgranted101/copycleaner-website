@@ -461,9 +461,9 @@ Try copying text from a PDF or email!"
     </section>
 
     <!-- Waitlist Modal -->
-    <div id="waitlistModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 hidden">
-        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative animate-in">
-            <button onclick="hideWaitlistModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">
+    <div id="waitlistModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 hidden" onclick="handleModalBackdropClick(event)">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative animate-in" onclick="event.stopPropagation()">
+            <button onclick="hideWaitlistModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl font-bold w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors" aria-label="Close">
                 ✕
             </button>
            
@@ -563,9 +563,9 @@ Try copying text from a PDF or email!"
     </div>
 
     <!-- Daily Limit Reached Modal -->
-    <div id="dailyLimitModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 hidden">
-        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative animate-in">
-            <button onclick="hideDailyLimitModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">
+    <div id="dailyLimitModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 hidden" onclick="handleModalBackdropClick(event, 'dailyLimitModal')">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative animate-in" onclick="event.stopPropagation()">
+            <button onclick="hideDailyLimitModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl font-bold w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors" aria-label="Close">
                 ✕
             </button>
            
@@ -1143,15 +1143,11 @@ properly    in    most    systems.`;
                 },
                 {
                     q: "Does it work with ChatGPT and AI text?",
-                    a: "Absolutely! CopyCleaner is ideal for cleaning up messy output from ChatGPT, Claude, Jasper, or any other AI tool. It removes markdown formatting, weird spacing, and makes AI text look natural and professional."
-                },
-                {
-                    q: "Why did my HTML/code get removed?",
-                    a: "CopyCleaner removes HTML tags by design to give you clean, plain text. This is one of our core features for cleaning web content. If you need to work with code, use a code editor instead."
+                    a: "Absolutely! CopyCleaner is perfect for cleaning messy output from ChatGPT, Claude, Jasper, or any AI tool. It removes markdown formatting, weird spacing, and makes AI text look natural and professional."
                 },
                 {
                     q: "Does my text get sent to a server?",
-                    a: "No! All text cleaning happens in your browser. Your text never leaves your device, ensuring complete privacy and security. We don't see, store, or transmit your content."
+                    a: "No! All text cleaning happens in your browser. Your text never leaves your device, ensuring complete privacy. We don't see, store, or transmit your content."
                 },
                 {
                     q: "What browsers are supported?",
