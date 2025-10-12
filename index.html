@@ -153,9 +153,9 @@
             <div class="flex items-center gap-4">
                 <a href="#features" class="hidden md:block text-gray-600 hover:text-gray-900 font-medium cursor-pointer">Features</a>
                 <a href="#how-it-works" class="hidden md:block text-gray-600 hover:text-gray-900 font-medium cursor-pointer">How It Works</a>
-                <button onclick="showUpgradeModal()" class="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors font-medium">
+                <button onclick="showWaitlistModal()" class="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors font-medium">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <span class="hidden sm:inline">Get Extension</span>
+                    <span class="hidden sm:inline">Get Early Access</span>
                 </button>
             </div>
         </div>
@@ -175,12 +175,12 @@
                     Try Free Now
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <button onclick="showUpgradeModal()" class="bg-indigo-800 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-indigo-900 transition-all border-2 border-white/30">
-                    Get Chrome Extension
+                <button onclick="showWaitlistModal()" class="bg-indigo-800 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-indigo-900 transition-all border-2 border-white/30">
+                    Get Early Access
                 </button>
             </div>
             <p class="mt-6 text-sm opacity-80">
-                ✓ No signup required • ✓ Privacy-first • ✓ Works offline
+                ✓ No signup required • ✓ Privacy-first • ✓ Processes locally in your browser
             </p>
         </div>
     </section>
@@ -211,7 +211,7 @@
             </div>
             <div id="limitReached" class="text-center mb-6 bg-red-50 border border-red-200 rounded-lg p-3 max-w-md mx-auto hidden">
                 <p class="text-sm text-red-600 font-semibold">
-                    ⚠️ Daily limit reached. Get the extension for unlimited cleans!
+                    ⚠️ Daily limit reached. Come back tomorrow or join the waitlist for early access!
                 </p>
             </div>
 
@@ -448,22 +448,22 @@ Try copying text from a PDF or email!"
     <!-- Final CTA -->
     <section class="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-center">
         <div class="max-w-4xl mx-auto px-4">
-            <h3 class="text-4xl font-bold mb-6">Ready for Unlimited Cleaning?</h3>
+            <h3 class="text-4xl font-bold mb-6">Ready for the Browser Extension?</h3>
             <p class="text-xl mb-8 opacity-95">
-                Get the browser extension for unlimited cleans, paste history, and keyboard shortcuts
+                Join the waitlist for early access to Chrome & Firefox extensions with unlimited cleaning, keyboard shortcuts, and paste history
             </p>
-            <button onclick="showUpgradeModal()" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all inline-flex items-center gap-2 btn-sparkle">
+            <button onclick="showWaitlistModal()" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all inline-flex items-center gap-2 btn-sparkle">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                Install Chrome Extension - $4.99/mo
+                Join Waitlist - FREE 3 Month Trial
             </button>
-            <p class="mt-4 text-sm opacity-75">Also available for Firefox • 7-day money-back guarantee</p>
+            <p class="mt-4 text-sm opacity-75">Get early access • Then $4.99/mo or $39/year</p>
         </div>
     </section>
 
-    <!-- Upgrade Modal -->
-    <div id="upgradeModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 hidden">
-        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative">
-            <button onclick="hideUpgradeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">
+    <!-- Waitlist Modal -->
+    <div id="waitlistModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative animate-in">
+            <button onclick="hideWaitlistModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">
                 ✕
             </button>
            
@@ -473,34 +473,38 @@ Try copying text from a PDF or email!"
                 </div>
                
                 <h3 class="text-2xl font-bold text-gray-900 mb-3">
-                    Unlock Unlimited Cleaning
+                    Join Extension Waitlist
                 </h3>
                
                 <p class="text-gray-600 mb-6">
-                    Install our browser extension for unlimited text cleaning, right-click context menu, and paste history.
+                    Get early access to our Chrome & Firefox extensions with unlimited cleaning and premium features.
                 </p>
 
-                <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-lg p-4 mb-6 text-left border border-indigo-200">
+                <div class="bg-gradient-to-br from-green-50 to-blue-50 rounded-lg p-4 mb-6 text-left border border-green-200">
                     <p class="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                        <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-                        Premium Features:
+                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Waitlist Benefits:
                     </p>
                     <ul class="space-y-2 text-sm text-gray-700">
                         <li class="flex items-start gap-2">
                             <span class="text-green-500 font-bold">✓</span>
-                            <span><strong>Unlimited</strong> cleans per day</span>
+                            <span><strong>FREE 3-month trial</strong> when extension launches</span>
                         </li>
                         <li class="flex items-start gap-2">
                             <span class="text-green-500 font-bold">✓</span>
-                            <span><strong>No character limit</strong></span>
+                            <span><strong>Early access</strong> before public release</span>
                         </li>
                         <li class="flex items-start gap-2">
                             <span class="text-green-500 font-bold">✓</span>
-                            <span><strong>Right-click</strong> to clean any text</span>
+                            <span><strong>Unlimited</strong> text cleaning</span>
                         </li>
                         <li class="flex items-start gap-2">
                             <span class="text-green-500 font-bold">✓</span>
-                            <span><strong>Keyboard shortcut</strong> (Cmd+Opt+V)</span>
+                            <span><strong>Right-click</strong> context menu to clean any text</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 font-bold">✓</span>
+                            <span><strong>Keyboard shortcuts</strong> (Cmd+Opt+V)</span>
                         </li>
                         <li class="flex items-start gap-2">
                             <span class="text-green-500 font-bold">✓</span>
@@ -513,17 +517,113 @@ Try copying text from a PDF or email!"
                     </ul>
                 </div>
 
-                <div class="space-y-3">
-                    <button class="w-full bg-indigo-600 text-white py-3 rounded-lg font-bold hover:bg-indigo-700 transition-colors text-lg">
-                        Install for Chrome ($4.99/mo)
+                <form id="waitlistForm" class="space-y-4">
+                    <div class="text-left">
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="waitlistEmail" 
+                            required
+                            placeholder="you@example.com"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                        >
+                    </div>
+
+                    <div class="text-left">
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Preferred Browser</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="browser" value="Chrome" required class="w-4 h-4 text-indigo-600">
+                                <span class="text-gray-700">Chrome</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="browser" value="Firefox" class="w-4 h-4 text-indigo-600">
+                                <span class="text-gray-700">Firefox</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="browser" value="Both" class="w-4 h-4 text-indigo-600">
+                                <span class="text-gray-700">Both</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button 
+                        type="submit"
+                        class="w-full bg-indigo-600 text-white py-3 rounded-lg font-bold hover:bg-indigo-700 transition-colors text-lg"
+                    >
+                        Join Waitlist - FREE 3 Months
                     </button>
-                    <button class="w-full bg-gray-600 text-white py-3 rounded-lg font-bold hover:bg-gray-700 transition-colors">
-                        Install for Firefox ($4.99/mo)
+                </form>
+
+                <p class="text-xs text-gray-500 mt-4">
+                    After 3 months: $4.99/mo or $39/year • Cancel anytime
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Daily Limit Reached Modal -->
+    <div id="dailyLimitModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative animate-in">
+            <button onclick="hideDailyLimitModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">
+                ✕
+            </button>
+           
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="text-white w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                </div>
+               
+                <h3 class="text-2xl font-bold text-gray-900 mb-3">
+                    Daily Limit Reached (3/3)
+                </h3>
+               
+                <p class="text-gray-600 mb-6">
+                    You've used all your free cleans for today. Come back tomorrow, or join the waitlist for early access to unlimited cleaning!
+                </p>
+
+                <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-lg p-4 mb-6 text-left border border-indigo-200">
+                    <p class="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        Join Extension Waitlist:
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 font-bold">✓</span>
+                            <span><strong>FREE 3-month trial</strong> when extension launches</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 font-bold">✓</span>
+                            <span><strong>Unlimited</strong> cleans per day</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 font-bold">✓</span>
+                            <span><strong>No character limit</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 font-bold">✓</span>
+                            <span>Early access before everyone else</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <button 
+                        onclick="showWaitlistModal(); hideDailyLimitModal();" 
+                        class="w-full bg-indigo-600 text-white py-3 rounded-lg font-bold hover:bg-indigo-700 transition-colors text-lg"
+                    >
+                        Join Waitlist - Get 3 Months FREE
+                    </button>
+                    <button 
+                        onclick="hideDailyLimitModal()" 
+                        class="w-full bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+                    >
+                        Maybe Later
                     </button>
                 </div>
 
                 <p class="text-xs text-gray-500 mt-4">
-                    Or get yearly for $39 (save 34%) • 7-day money-back guarantee
+                    Your daily limit resets in 24 hours
                 </p>
             </div>
         </div>
@@ -650,6 +750,15 @@ properly    in    most    systems.`;
                     document.getElementById('feedbackCharCount').textContent = `${count}/200`;
                 });
             }
+
+            // Waitlist form submission
+            const waitlistForm = document.getElementById('waitlistForm');
+            if (waitlistForm) {
+                waitlistForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    submitWaitlist();
+                });
+            }
         }
 
         function getDailyUses() {
@@ -676,11 +785,9 @@ properly    in    most    systems.`;
             let originalLength = text.length;
 
             // ===== 1. REMOVE HTML TAGS & WEB CONTENT =====
-            // Strip HTML tags completely
             cleaned = cleaned.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '');
             cleaned = cleaned.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
             cleaned = cleaned.replace(/<[^>]+>/g, '');
-            // Decode HTML entities
             cleaned = cleaned.replace(/&nbsp;/g, ' ');
             cleaned = cleaned.replace(/&amp;/g, '&');
             cleaned = cleaned.replace(/&lt;/g, '<');
@@ -690,11 +797,8 @@ properly    in    most    systems.`;
             cleaned = cleaned.replace(/&[a-z]+;/gi, '');
 
             // ===== 2. REMOVE EMAIL FORMATTING =====
-            // Remove email headers (From:, To:, Subject:, Date:)
             cleaned = cleaned.replace(/^(From|To|Cc|Bcc|Subject|Date|Sent):.*$/gim, '');
-            // Remove email quoted replies (lines starting with > or |)
             cleaned = cleaned.replace(/^[>|]+.*$/gm, '');
-            // Remove common email signatures
             cleaned = cleaned.replace(/^--\s*$/gm, '');
             cleaned = cleaned.replace(/^_{5,}$/gm, '');
             cleaned = cleaned.replace(/^Sent from my (iPhone|iPad|Android|Galaxy)/gim, '');
@@ -702,30 +806,22 @@ properly    in    most    systems.`;
             cleaned = cleaned.replace(/^This email and any attachments.*$/gim, '');
 
             // ===== 3. REMOVE MARKDOWN & AI FORMATTING =====
-            // Remove markdown bold/italic markers
-            cleaned = cleaned.replace(/\*\*\*([^*]+)\*\*\*/g, '$1'); // ***bold italic***
-            cleaned = cleaned.replace(/\*\*([^*]+)\*\*/g, '$1');     // **bold**
-            cleaned = cleaned.replace(/\*([^*]+)\*/g, '$1');         // *italic*
-            cleaned = cleaned.replace(/__([^_]+)__/g, '$1');         // __bold__
-            cleaned = cleaned.replace(/_([^_]+)_/g, '$1');           // _italic_
-            // Remove markdown headers
+            cleaned = cleaned.replace(/\*\*\*([^*]+)\*\*\*/g, '$1');
+            cleaned = cleaned.replace(/\*\*([^*]+)\*\*/g, '$1');
+            cleaned = cleaned.replace(/\*([^*]+)\*/g, '$1');
+            cleaned = cleaned.replace(/__([^_]+)__/g, '$1');
+            cleaned = cleaned.replace(/_([^_]+)_/g, '$1');
             cleaned = cleaned.replace(/^#{1,6}\s+/gm, '');
-            // Remove markdown code blocks
             cleaned = cleaned.replace(/```[\s\S]*?```/g, '');
             cleaned = cleaned.replace(/`([^`]+)`/g, '$1');
-            // Remove markdown links but keep text
             cleaned = cleaned.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
-            // Remove markdown lists
             cleaned = cleaned.replace(/^[\s]*[-*+]\s+/gm, '');
             cleaned = cleaned.replace(/^[\s]*\d+\.\s+/gm, '');
 
             // ===== 4. REMOVE WORD/DOCS FORMATTING =====
-            // Remove excessive tabs and convert to single space
             cleaned = cleaned.replace(/\t+/g, ' ');
-            // Remove bullet points and list markers
             cleaned = cleaned.replace(/^[\s]*[•●○■□▪▫◆◇►▻]+[\s]*/gm, '');
             cleaned = cleaned.replace(/^[\s]*[①②③④⑤⑥⑦⑧⑨⑩]+[\s]*/gm, '');
-            // Remove page numbers (common in Word docs)
             cleaned = cleaned.replace(/^[\s]*Page \d+[\s]*$/gim, '');
             cleaned = cleaned.replace(/^\d+[\s]*$/gm, '');
 
@@ -736,47 +832,31 @@ properly    in    most    systems.`;
 
             // ===== 6. FIX LINE BREAKS =====
             const beforeBreaks = cleaned;
-            // Fix breaks between words (handles uppercase/lowercase/punctuation)
             cleaned = cleaned.replace(/([a-zA-Z,;:)])\n([a-zA-Z])/g, '$1 $2');
-            // Fix breaks after periods if next word is lowercase (not new sentence)
             cleaned = cleaned.replace(/([.!?])\n([a-z])/g, '$1 $2');
             breaksFixed = (beforeBreaks.match(/([a-zA-Z,;:)])\n([a-zA-Z])/g) || []).length;
 
             // ===== 7. CLEAN UP SPECIAL CHARACTERS =====
-            // Remove invisible characters (zero-width spaces, etc.)
             cleaned = cleaned.replace(/[\u200B-\u200D\uFEFF\u00A0]/g, '');
-            // Remove soft hyphens
             cleaned = cleaned.replace(/\u00AD/g, '');
-            // Remove control characters
             cleaned = cleaned.replace(/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/g, '');
 
             // ===== 8. CONVERT SMART QUOTES & PUNCTUATION =====
-            // Smart quotes to regular quotes
             cleaned = cleaned.replace(/[''‚]/g, "'");
             cleaned = cleaned.replace(/[""„]/g, '"');
-            // Fancy quotes
             cleaned = cleaned.replace(/[«»]/g, '"');
             cleaned = cleaned.replace(/[‹›]/g, "'");
-            // Ellipsis
             cleaned = cleaned.replace(/…/g, '...');
-            // Em/en dashes to regular dash
             cleaned = cleaned.replace(/[—–]/g, '-');
-            // Trademark/copyright symbols (optional - can be removed if desired)
-            // cleaned = cleaned.replace(/[™®©]/g, '');
 
             // ===== 9. REMOVE EXCESSIVE LINE BREAKS =====
-            // 3+ line breaks become 2 (paragraph spacing)
             cleaned = cleaned.replace(/\n{3,}/g, '\n\n');
-            // Remove spaces around line breaks
             cleaned = cleaned.replace(/ +\n/g, '\n');
             cleaned = cleaned.replace(/\n +/g, '\n');
 
             // ===== 10. FINAL CLEANUP =====
-            // Remove leading/trailing whitespace
             cleaned = cleaned.trim();
-            // Ensure sentences have proper spacing after periods
             cleaned = cleaned.replace(/\.([A-Z])/g, '. $1');
-            // Remove multiple spaces that might have been created
             cleaned = cleaned.replace(/[ ]{2,}/g, ' ');
 
             const charsRemoved = originalLength - cleaned.length;
@@ -789,7 +869,7 @@ properly    in    most    systems.`;
 
         function handleClean() {
             if (state.dailyUses >= MAX_DAILY_USES) {
-                showUpgradeModal();
+                showDailyLimitModal();
                 return;
             }
 
@@ -799,11 +879,10 @@ properly    in    most    systems.`;
             }
 
             if (state.inputText.length > MAX_CHARS) {
-                alert(`Free tier limited to ${MAX_CHARS.toLocaleString()} characters. Upgrade for unlimited!`);
+                alert(`Free tier limited to ${MAX_CHARS.toLocaleString()} characters. Join the waitlist for unlimited access!`);
                 return;
             }
 
-            // Show progress bar and cleaning animation
             const cleanBtn = document.getElementById('cleanBtn');
             const loader = document.getElementById('cleaningLoader');
             const outputDiv = document.getElementById('outputText');
@@ -816,7 +895,6 @@ properly    in    most    systems.`;
             progressBar.classList.add('show');
             outputDiv.style.opacity = '0.3';
 
-            // Simulate cleaning with 4-second progress bar animation
             setTimeout(() => {
                 const result = cleanText(state.inputText);
                 state.outputText = result.cleaned;
@@ -825,13 +903,11 @@ properly    in    most    systems.`;
                 state.dailyUses++;
                 saveDailyUses(state.dailyUses);
 
-                // Hide loader and progress bar
                 loader.classList.remove('show');
                 progressContainer.classList.add('hidden');
                 progressBar.classList.remove('show');
                 progressBar.style.width = '0%';
                 
-                // Show results with fade-in animation
                 outputDiv.style.opacity = '1';
                 outputDiv.textContent = state.outputText;
                 outputDiv.classList.add('fade-in-up');
@@ -846,7 +922,7 @@ properly    in    most    systems.`;
                 updateUI();
 
                 if (state.dailyUses >= MAX_DAILY_USES) {
-                    setTimeout(() => showUpgradeModal(), 1000);
+                    setTimeout(() => showDailyLimitModal(), 1000);
                 }
             }, 4000);
         }
@@ -911,7 +987,6 @@ properly    in    most    systems.`;
                 document.getElementById('cleanBtn').innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg> Clean My Text ✨`;
             }
 
-            // Show reset button if user has used any cleans
             if (state.dailyUses > 0) {
                 document.getElementById('resetBtn').classList.remove('hidden');
             }
@@ -921,12 +996,69 @@ properly    in    most    systems.`;
             document.getElementById('app-tool').scrollIntoView({ behavior: 'smooth' });
         }
 
-        function showUpgradeModal() {
-            document.getElementById('upgradeModal').classList.remove('hidden');
+        function showWaitlistModal() {
+            document.getElementById('waitlistModal').classList.remove('hidden');
         }
 
-        function hideUpgradeModal() {
-            document.getElementById('upgradeModal').classList.add('hidden');
+        function hideWaitlistModal() {
+            document.getElementById('waitlistModal').classList.add('hidden');
+        }
+
+        function showDailyLimitModal() {
+            document.getElementById('dailyLimitModal').classList.remove('hidden');
+        }
+
+        function hideDailyLimitModal() {
+            document.getElementById('dailyLimitModal').classList.add('hidden');
+        }
+
+        function submitWaitlist() {
+            const email = document.getElementById('waitlistEmail').value;
+            const browser = document.querySelector('input[name="browser"]:checked')?.value;
+
+            if (!email || !browser) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // TODO: Replace these with your actual Google Form IDs after creating the form
+            const googleFormURL = 'https://docs.google.com/forms/d/e/YOUR_WAITLIST_FORM_ID/formResponse';
+            const formData = new FormData();
+            formData.append('entry.YOUR_EMAIL_FIELD_ID', email);
+            formData.append('entry.YOUR_BROWSER_FIELD_ID', browser);
+
+            fetch(googleFormURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            }).catch(() => {});
+
+            // Save locally
+            const waitlistData = JSON.parse(localStorage.getItem('copycleaner_waitlist') || '[]');
+            waitlistData.push({
+                email,
+                browser,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('copycleaner_waitlist', JSON.stringify(waitlistData));
+
+            // Show success message
+            document.getElementById('waitlistModal').innerHTML = `
+                <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative animate-in">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="text-white w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">You're on the list! 🎉</h3>
+                        <p class="text-gray-600 mb-6">We'll email you at <strong>${email}</strong> when the ${browser} extension launches with your FREE 3-month trial.</p>
+                        <button onclick="hideWaitlistModal()" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-bold hover:bg-indigo-700 transition-colors">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            console.log('✅ Waitlist signup:', { email, browser });
         }
 
         function selectFeedback(type) {
@@ -954,7 +1086,6 @@ properly    in    most    systems.`;
 
             const feedbackText = document.getElementById('feedbackTextarea').value.trim();
             
-            // Save to localStorage
             const feedback = JSON.parse(localStorage.getItem('copycleaner_feedback') || '{"positive": 0, "negative": 0, "comments": []}');
             feedback[selectedFeedbackType]++;
             
@@ -980,11 +1111,9 @@ properly    in    most    systems.`;
                 body: formData
             }).catch(() => {});
             
-            // Hide the entire feedback widget section
             const feedbackWidget = document.getElementById('feedbackWidget');
             feedbackWidget.classList.add('hidden');
             
-            // Show thank you message in the stats box (after the stats)
             const statsBox = document.getElementById('statsBox');
             const thankYouHTML = `
                 <div id="feedbackThanksMessage" class="mt-4 pt-4 border-t border-green-200 text-center fade-in-up">
@@ -995,7 +1124,6 @@ properly    in    most    systems.`;
                 </div>
             `;
             
-            // Check if thank you message already exists, if not add it
             if (!document.getElementById('feedbackThanksMessage')) {
                 statsBox.insertAdjacentHTML('beforeend', thankYouHTML);
             }
@@ -1006,20 +1134,16 @@ properly    in    most    systems.`;
         function renderFAQs() {
             const faqs = [
                 {
-                    q: "How do I cancel my subscription?",
-                    a: "Easy! Check your subscription receipt email from Lemon Squeezy and click 'Manage Subscription.' You can cancel, pause, or modify your plan anytime. No need to contact us. Cancellations take effect at the end of your current billing period."
-                },
-                {
                     q: "Is CopyCleaner free?",
-                    a: "Yes! The web app is free with 3 cleans per day. The browser extension offers unlimited cleaning for $4.99/month or $39/year (save 34%)."
+                    a: "Yes! The web app is free with 3 cleans per day. Join our waitlist to get the browser extension with unlimited cleaning and a FREE 3-month trial when it launches."
                 },
                 {
                     q: "How is this different from 'Paste without formatting'?",
-                    a: "Cmd+Shift+V only removes basic formatting. CopyCleaner fixes PDF line breaks, removes extra spaces, converts smart quotes, removes invisible characters, and cleans messy AI-generated text. It's designed specifically for real-world formatting nightmares."
+                    a: "Cmd+Shift+V only removes basic formatting. CopyCleaner fixes PDF line breaks, removes extra spaces, converts smart quotes, strips HTML tags, removes email signatures, cleans markdown from AI tools, and handles invisible characters. It's designed specifically for real-world formatting nightmares."
                 },
                 {
                     q: "Does it work with ChatGPT and AI text?",
-                    a: "Absolutely! CopyCleaner is perfect for cleaning messy output from ChatGPT, Claude, Jasper, or any AI tool. It removes weird spacing, fixes formatting inconsistencies, and makes AI text look natural and professional."
+                    a: "Absolutely! CopyCleaner is perfect for cleaning messy output from ChatGPT, Claude, Jasper, or any AI tool. It removes markdown formatting, weird spacing, and makes AI text look natural and professional."
                 },
                 {
                     q: "Does my text get sent to a server?",
@@ -1027,15 +1151,19 @@ properly    in    most    systems.`;
                 },
                 {
                     q: "What browsers are supported?",
-                    a: "The web app works in all modern browsers. The extension is available for Chrome and Firefox, with Safari support coming soon."
+                    a: "The web app works in all modern browsers. The extension will be available for Chrome and Firefox - join the waitlist to get notified when it launches!"
                 },
                 {
-                    q: "What's included in the premium extension?",
-                    a: "Premium includes: unlimited cleans, no character limit, right-click context menu, keyboard shortcuts, paste history (last 50 cleans), works offline, and priority support."
+                    q: "What's included in the browser extension?",
+                    a: "The extension includes: unlimited cleans, no character limit, right-click context menu to clean any text, keyboard shortcuts (Cmd+Opt+V), paste history (last 50 cleans), and works offline. Waitlist members get a FREE 3-month trial!"
                 },
                 {
-                    q: "Do you offer refunds?",
-                    a: "Yes! We offer a 7-day money-back guarantee. If you're not satisfied, email hello@copycleaner.co within 7 days for a full refund, no questions asked."
+                    q: "How much does the extension cost?",
+                    a: "After your FREE 3-month trial (for waitlist members), the extension is $4.99/month or $39/year (save 34%). Cancel anytime."
+                },
+                {
+                    q: "When will the extension launch?",
+                    a: "We're working hard on it! Join the waitlist to be the first to know when it's ready, and you'll get 3 months FREE when it launches."
                 }
             ];
 
