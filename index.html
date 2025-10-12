@@ -1022,7 +1022,7 @@ properly    in    most    systems.`;
             }
 
             // TODO: Replace these with your actual Google Form IDs after creating the form
-            const googleFormURL = 'https://docs.google.com/forms/d/e/YOUR_WAITLIST_FORM_ID/formResponse';
+            const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLSdERdjO7nOlfeZ_4bPXK5BgyelVUEhQkmadK_DYcwkOqw5_5Q/formResponse';
             const formData = new FormData();
             formData.append('entry.1410527887', email);
             formData.append('entry.1025819786', browser);
@@ -1105,7 +1105,7 @@ properly    in    most    systems.`;
             // Feedback type (e.g. thumbs up / down)
             formData.append('entry.364116560', selectedFeedbackType);
            // Feedback text (user’s written comment)
-            formData.append('entry.1990954984', feedbackText);
+            formData.append('entry.1920954984', feedbackText);
             
             fetch(googleFormURL, {
                 method: 'POST',
