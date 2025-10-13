@@ -1031,28 +1031,46 @@ properly    in    most    systems.`;
                 return;
             }
 
-            // FIXED: Submit to Google Apps Script - WAITLIST
+            // Submit using hidden iframe method to bypass CORS
             const appsScriptURL = 'https://script.google.com/macros/s/AKfycby76mZmVLXHsPF_MlxDYqABB3S14BvdZRrWQH6XauK3_WC8D5lQ0ktvjsUdILWTEKo4/exec';
             
-            const payload = {
-                email: email,
-                browser: browser
-            };
-
-            fetch(appsScriptURL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('✅ Waitlist submission successful:', data);
-            })
-            .catch(error => {
-                console.error('❌ Waitlist submission error:', error);
-            });
+            // Create form
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = appsScriptURL;
+            form.target = 'hidden_iframe';
+            form.style.display = 'none';
+            
+            // Add email field
+            const emailInput = document.createElement('input');
+            emailInput.type = 'hidden';
+            emailInput.name = 'email';
+            emailInput.value = email;
+            form.appendChild(emailInput);
+            
+            // Add browser field
+            const browserInput = document.createElement('input');
+            browserInput.type = 'hidden';
+            browserInput.name = 'browser';
+            browserInput.value = browser;
+            form.appendChild(browserInput);
+            
+            // Create hidden iframe
+            let iframe = document.getElementById('hidden_iframe');
+            if (!iframe) {
+                iframe = document.createElement('iframe');
+                iframe.name = 'hidden_iframe';
+                iframe.id = 'hidden_iframe';
+                iframe.style.display = 'none';
+                document.body.appendChild(iframe);
+            }
+            
+            // Submit form
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+            
+            console.log('✅ Waitlist submitted:', { email, browser });
 
             // Save locally
             const waitlistData = JSON.parse(localStorage.getItem('copycleaner_waitlist') || '[]');
@@ -1121,28 +1139,46 @@ properly    in    most    systems.`;
             
             localStorage.setItem('copycleaner_feedback', JSON.stringify(feedback));
             
-            // FIXED: Submit to Google Apps Script - FEEDBACK
+            // Submit using hidden iframe method to bypass CORS
             const appsScriptURL = 'https://script.google.com/macros/s/AKfycbxyJdKFxJjHYlj8xr7ipAOdevP5ToG0_1ggwitaCeInLS0HiGsrUxD4kdG0HlVsm-EMhw/exec';
             
-            const payload = {
-                feedbackType: selectedFeedbackType,
-                feedbackText: feedbackText
-            };
-
-            fetch(appsScriptURL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('✅ Feedback submission successful:', data);
-            })
-            .catch(error => {
-                console.error('❌ Feedback submission error:', error);
-            });
+            // Create form
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = appsScriptURL;
+            form.target = 'hidden_iframe_feedback';
+            form.style.display = 'none';
+            
+            // Add feedbackType field
+            const typeInput = document.createElement('input');
+            typeInput.type = 'hidden';
+            typeInput.name = 'feedbackType';
+            typeInput.value = selectedFeedbackType;
+            form.appendChild(typeInput);
+            
+            // Add feedbackText field
+            const textInput = document.createElement('input');
+            textInput.type = 'hidden';
+            textInput.name = 'feedbackText';
+            textInput.value = feedbackText;
+            form.appendChild(textInput);
+            
+            // Create hidden iframe
+            let iframe = document.getElementById('hidden_iframe_feedback');
+            if (!iframe) {
+                iframe = document.createElement('iframe');
+                iframe.name = 'hidden_iframe_feedback';
+                iframe.id = 'hidden_iframe_feedback';
+                iframe.style.display = 'none';
+                document.body.appendChild(iframe);
+            }
+            
+            // Submit form
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+            
+            console.log('✅ Feedback submitted:', { feedbackType: selectedFeedbackType, feedbackText });
             
             const feedbackWidget = document.getElementById('feedbackWidget');
             feedbackWidget.classList.add('hidden');
