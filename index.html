@@ -461,9 +461,9 @@ Try copying text from a PDF or email!"
     </section>
 
     <!-- Waitlist Modal -->
-    <div id="waitlistModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 hidden" onclick="handleModalBackdropClick(event)">
-        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative animate-in" onclick="event.stopPropagation()">
-            <button onclick="hideWaitlistModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl font-bold w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors" aria-label="Close">
+    <div id="waitlistModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 hidden overflow-y-auto" onclick="handleModalBackdropClick(event)">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative animate-in my-8 max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+            <button onclick="hideWaitlistModal()" class="sticky top-0 right-0 float-right text-gray-400 hover:text-gray-600 text-2xl font-bold w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors z-10 bg-white" aria-label="Close">
                 ✕
             </button>
            
@@ -563,9 +563,9 @@ Try copying text from a PDF or email!"
     </div>
 
     <!-- Daily Limit Reached Modal -->
-    <div id="dailyLimitModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 hidden" onclick="handleModalBackdropClick(event, 'dailyLimitModal')">
-        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative animate-in" onclick="event.stopPropagation()">
-            <button onclick="hideDailyLimitModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl font-bold w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors" aria-label="Close">
+    <div id="dailyLimitModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 hidden overflow-y-auto" onclick="handleModalBackdropClick(event, 'dailyLimitModal')">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative animate-in my-8 max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+            <button onclick="hideDailyLimitModal()" class="sticky top-0 right-0 float-right text-gray-400 hover:text-gray-600 text-2xl font-bold w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors z-10 bg-white" aria-label="Close">
                 ✕
             </button>
            
