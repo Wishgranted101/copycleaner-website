@@ -146,18 +146,35 @@
     <!-- Header -->
     <header class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <!-- Logo -->
             <div class="flex items-center gap-2">
                 <img src="/copycleaner-logo.png" alt="CopyCleaner Logo" class="h-16 w-auto">
                 <h1 class="text-2xl font-bold text-gray-900">CopyCleaner.co</h1>
             </div>
-            <div class="flex items-center gap-4">
-                <a href="#features" class="hidden md:block text-gray-600 hover:text-gray-900 font-medium cursor-pointer">Features</a>
-                <a href="#how-it-works" class="hidden md:block text-gray-600 hover:text-gray-900 font-medium cursor-pointer">How It Works</a>
-                <button onclick="showWaitlistModal()" class="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors font-medium">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <span class="hidden sm:inline">Get Early Access</span>
-                </button>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#features" class="text-gray-600 hover:text-gray-900 font-medium cursor-pointer">Features</a>
+                <a href="#how-it-works" class="text-gray-600 hover:text-gray-900 font-medium cursor-pointer">How It Works</a>
             </div>
+
+            <!-- Mobile Hamburger Menu Button -->
+            <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Menu">
+                <svg id="hamburgerIcon" class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+                <svg id="closeIcon" class="w-6 h-6 text-gray-700 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200 animate-in">
+            <nav class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-3">
+                <a href="#features" onclick="closeMobileMenu()" class="text-gray-700 hover:text-indigo-600 font-medium py-2 px-3 rounded-lg hover:bg-gray-50 transition-colors">Features</a>
+                <a href="#how-it-works" onclick="closeMobileMenu()" class="text-gray-700 hover:text-indigo-600 font-medium py-2 px-3 rounded-lg hover:bg-gray-50 transition-colors">How It Works</a>
+            </nav>
         </div>
     </header>
 
@@ -667,7 +684,6 @@ Try copying text from a PDF or email!"
            
             <p class="text-center text-gray-600 text-sm mb-4">© 2025 CopyCleaner.co • Your text never leaves your browser • Built with privacy in mind</p>
             <div class="flex justify-center gap-6 flex-wrap text-sm mb-4">
-                <a href="/about.html" class="text-gray-600 hover:text-gray-900">About</a>
                 <a href="/blog/" class="text-gray-600 hover:text-gray-900">Blog</a>
                 <a href="/privacy.html" class="text-gray-600 hover:text-gray-900">Privacy Policy</a>
                 <a href="/terms.html" class="text-gray-600 hover:text-gray-900">Terms of Service</a>
@@ -1102,7 +1118,7 @@ properly    in    most    systems.`;
 
         function selectFeedback(type) {
             // FIXED: Capitalize the feedback type to match Google Form exactly
-            selectedFeedbackType = type.charAt(0).toUpperCase() + type.slice(1); // "positive" -> "Positive"
+            selectedFeedbackType = type.charAt(0).toUpperCase() + type.slice(0); // "positive" -> "Positive"
             
             const upBtn = document.getElementById('thumbsUpBtn');
             const downBtn = document.getElementById('thumbsDownBtn');
@@ -1302,6 +1318,53 @@ properly    in    most    systems.`;
             document.execCommand('copy');
             document.body.removeChild(textarea);
         }
+
+        // Mobile Menu Toggle Functions
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const hamburgerIcon = document.getElementById('hamburgerIcon');
+            const closeIcon = document.getElementById('closeIcon');
+            
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                hamburgerIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const hamburgerIcon = document.getElementById('hamburgerIcon');
+            const closeIcon = document.getElementById('closeIcon');
+            
+            mobileMenu.classList.add('hidden');
+            hamburgerIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            
+            if (!mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close mobile menu on scroll
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            const st = window.pageYOffset || document.documentElement.scrollTop;
+            if (st > lastScrollTop + 50) { // Scrolling down
+                closeMobileMenu();
+            }
+            lastScrollTop = st <= 0 ? 0 : st;
+        }, false);
 
         // Initialize on page load
         init();
