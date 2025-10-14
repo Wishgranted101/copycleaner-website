@@ -17,6 +17,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
    
     <style>
+        /* Smooth scrolling with offset for sticky header */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px; /* Accounts for sticky header height */
+        }
+        
         @keyframes slideDown {
             from {
                 opacity: 0;
