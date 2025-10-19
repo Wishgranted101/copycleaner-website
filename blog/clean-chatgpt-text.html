@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Clean Messy Text from ChatGPT (2025 Guide) | CopyCleaner</title>
+    <meta name="description" content="Fix messy ChatGPT text instantly. Remove weird line breaks, hidden spaces, markdown junk, and AI formatting issues in one click. Free tool, no signup.">
+    <meta name="keywords" content="clean ChatGPT text, fix ChatGPT formatting, clean AI output, format AI text, ChatGPT formatting issues">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-in { animation: slideDown 0.3s ease-out; }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+    
+    <header class="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2">
+                <img src="/copycleaner-logo.png" alt="CopyCleaner Logo" class="h-16 w-auto">
+                <span class="text-2xl font-bold text-gray-900">CopyCleaner.co</span>
+            </a>
+            <a href="/blog" class="text-gray-600 hover:text-gray-900 font-medium text-sm transition-colors">← Back to Blog</a>
+        </div>
+    </header>
+
+    <article class="max-w-4xl mx-auto px-4 py-12">
+        
+        <div class="mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+                How to Clean Messy Text from ChatGPT (and Other AI Tools)
+            </h1>
+            <p class="text-xl text-gray-600 mb-6 leading-relaxed">
+                If you've ever copied text from ChatGPT, you've seen the mess. Here's the 5-second fix.
+            </p>
+            <div class="flex items-center gap-4 text-sm text-gray-500">
+                <span>Published: October 2025</span>
+                <span>•</span>
+                <span>8 min read</span>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-indigo-50 to-purple-50 border-2 border-indigo-200 rounded-xl p-6 mb-10 animate-in">
+            <p class="text-gray-700 mb-3 font-semibold">Want the fast fix?</p>
+            <p class="text-gray-600 mb-4">Paste your text into <a href="/" class="text-indigo-600 font-semibold hover:underline">CopyCleaner.co</a> — it removes hidden spaces, weird quotes, and markdown junk in one click.</p>
+            <a href="/" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-all shadow-md hover:shadow-lg">
+                Try Free Tool →
+            </a>
+            <p class="text-xs text-gray-500 mt-3">No signup • 3 free uses per day</p>
+        </div>
+
+        <div class="space-y-6">
+            
+            <p class="text-xl text-gray-700 leading-relaxed">
+                You copy text straight from ChatGPT. You paste it into Word. Your professional document suddenly looks like it was written by a malfunctioning robot.
+            </p>
+
+            <p class="text-gray-700 leading-relaxed">
+                Line breaks where they shouldn't be. Double spaces everywhere. Curly quotes that break in plain text. Random markdown syntax like **bold** or _italic_. The output often includes markdown, which is <a href="/blog/strip-html-tags" class="text-indigo-600 hover:underline">a simple form of HTML that can mess up formatting</a>. It also defaults to using <a href="/blog/fix-weird-quotes" class="text-indigo-600 hover:underline">"smart" quotes and apostrophes</a>, which can break things. It looks clean inside the ChatGPT window. Until you paste it somewhere else.
+            </p>
+
+            <p class="text-gray-700 leading-relaxed">Sound familiar?</p>
+
+            <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Why ChatGPT Text Formatting Breaks</h2>
+
+            <p class="text-gray-700 leading-relaxed mb-6">
+                ChatGPT and other AI tools output text with hidden formatting characters. These are invisible in the chat window but cause chaos when you paste elsewhere.
+            </p>
+
+            <div class="overflow-x-auto mb-8 rounded-lg shadow-md">
+                <table class="min-w-full bg-white border-2 border-gray-200">
+                    <thead class="bg-gradient-to-r from-indigo-50 to-purple-50">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-sm font-bold text-gray-900 border-b-2 border-gray-200">Issue</th>
+                            <th class="px-6 py-4 text-left text-sm font-bold text-gray-900 border-b-2 border-gray-200">What It Looks Like</th>
+                            <th class="px-6 py-4 text-left text-sm font-bold text-gray-900 border-b-2 border-gray-200">Why It Happens</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Hidden spaces</td>
+                            <td class="px-6 py-4 text-sm text-gray-700 font-mono bg-gray-50">word  word</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">AI adds invisible spacing for display alignment</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Markdown leftovers</td>
+                            <td class="px-6 py-4 text-sm text-gray-700 font-mono bg-gray-50">**bold**, _italic_</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Markdown used to render style in chat windows</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Line breaks</td>
+                            <td class="px-6 py-4 text-sm text-gray-700 font-mono bg-gray-50">\n\n gaps</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">AI splits responses for readability</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Smart quotes</td>
+                            <td class="px-6 py-4 text-sm text-gray-700 font-mono bg-gray-50">"Curly" vs "Straight"</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Different encodings between apps</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="text-gray-700 leading-relaxed">
+                These invisible differences confuse your text editor. The result is messy paragraphs and broken sentences.
+            </p>
+
+            <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">When This Actually Matters</h2>
+
+            <p class="text-gray-700 leading-relaxed mb-6">
+                ChatGPT formatting problems aren't just annoying. They cost you real time:
+            </p>
+
+            <div class="space-y-6">
+                <div class="bg-white border-2 border-indigo-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Copywriter pasting into client email</h3>
+                    <p class="text-gray-700 mb-3 leading-relaxed">
+                        You use ChatGPT to draft an email campaign. You copy the text into Gmail. Suddenly there are extra line breaks between paragraphs, smart quotes show up as question marks, and your professional email looks sloppy.
+                    </p>
+                    <p class="text-gray-700 font-semibold text-sm bg-red-50 border-l-4 border-red-500 p-3 rounded">
+                        Cost: 10 minutes manually fixing spacing and quotes before sending.
+                    </p>
+                </div>
+
+                <div class="bg-white border-2 border-purple-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Student copying research notes into Word</h3>
+                    <p class="text-gray-700 mb-3 leading-relaxed">
+                        ChatGPT helps you summarize research papers. You paste the summaries into your Word document. The formatting breaks completely. Bullet points turn into asterisks. Indentation is wrong. Your bibliography looks unprofessional.
+                    </p>
+                    <p class="text-gray-700 font-semibold text-sm bg-red-50 border-l-4 border-red-500 p-3 rounded">
+                        Cost: 15-20 minutes per document in manual cleanup.
+                    </p>
+                </div>
+
+                <div class="bg-white border-2 border-pink-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Developer copying code snippets</h3>
+                    <p class="text-gray-700 mb-3 leading-relaxed">
+                        ChatGPT generates a code snippet. You copy it into your editor. Smart quotes break the syntax. Your code won't run. You spend time debugging only to find curly quotes where straight quotes should be.
+                    </p>
+                    <p class="text-gray-700 font-semibold text-sm bg-red-50 border-l-4 border-red-500 p-3 rounded">
+                        Cost: 30 minutes lost debugging formatting instead of actual code issues.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">The Four Big ChatGPT Problems</h2>
+
+            <div class="space-y-8">
+                <div class="bg-white border-2 border-red-200 rounded-xl p-6 shadow-md">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Problem 1: Multiple Spaces</h3>
+                    
+                    <p class="text-sm font-semibold text-red-600 mb-2">You copy this from ChatGPT:</p>
+                    <div class="bg-red-50 border-2 border-red-300 rounded-lg p-4 mb-4 font-mono text-sm text-red-700">
+                        This    text    has    too    many    spaces.
+                    </div>
+
+                    <p class="text-sm font-semibold text-green-600 mb-2">You want:</p>
+                    <div class="bg-green-50 border-2 border-green-300 rounded-lg p-4 mb-4 font-mono text-sm text-green-700">
+                        This text has too many spaces.
+                    </div>
+
+                    <p class="text-gray-700 mb-3 leading-relaxed"><strong>What causes it:</strong> ChatGPT sometimes uses multiple spaces for visual alignment in its interface. Your document treats those as actual space characters.</p>
+
+                    <p class="text-gray-700 leading-relaxed"><strong>The fix:</strong> CopyCleaner automatically reduces multiple spaces to single spaces while keeping paragraph breaks.</p>
+                </div>
+
+                <div class="bg-white border-2 border-red-200 rounded-xl p-6 shadow-md">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Problem 2: Broken Line Breaks</h3>
+                    
+                    <p class="text-sm font-semibold text-red-600 mb-2">You copy this:</p>
+                    <div class="bg-red-50 border-2 border-red-300 rounded-lg p-4 mb-4 font-mono text-sm text-red-700">
+                        This sentence starts fine but then<br>
+                        breaks in the middle for no<br>
+                        apparent reason and makes it<br>
+                        hard to read or use anywhere.
+                    </div>
+
+                    <p class="text-sm font-semibold text-green-600 mb-2">You want:</p>
+                    <div class="bg-green-50 border-2 border-green-300 rounded-lg p-4 mb-4 font-mono text-sm text-green-700">
+                        This sentence starts fine but then breaks in the middle for no apparent reason and makes it hard to read or use anywhere.
+                    </div>
+
+                    <p class="text-gray-700 mb-3 leading-relaxed"><strong>What causes it:</strong> AI tools wrap text to fit their chat window. When you copy, those visual wraps become actual line breaks.</p>
+
+                    <p class="text-gray-700 leading-relaxed"><strong>The fix:</strong> CopyCleaner detects mid-sentence breaks and removes them. It keeps paragraph breaks where they belong.</p>
+                </div>
+
+                <div class="bg-white border-2 border-red-200 rounded-xl p-6 shadow-md">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Problem 3: Smart Quotes</h3>
+                    
+                    <p class="text-sm font-semibold text-red-600 mb-2">You copy this:</p>
+                    <div class="bg-red-50 border-2 border-red-300 rounded-lg p-4 mb-4 font-mono text-sm text-red-700">
+                        "These are smart quotes" and they're annoying.
+                    </div>
+
+                    <p class="text-sm font-semibold text-green-600 mb-2">You want:</p>
+                    <div class="bg-green-50 border-2 border-green-300 rounded-lg p-4 mb-4 font-mono text-sm text-green-700">
+                        "These are regular quotes" and they're better.
+                    </div>
+
+                    <p class="text-gray-700 mb-3 leading-relaxed"><strong>What causes it:</strong> AI tools use typographically "correct" curly quotes. These break in code, plain text editors, and some CMS platforms.</p>
+
+                    <p class="text-gray-700 leading-relaxed"><strong>The fix:</strong> CopyCleaner converts all curly quotes and apostrophes to straight quotes that work everywhere.</p>
+                </div>
+
+                <div class="bg-white border-2 border-red-200 rounded-xl p-6 shadow-md">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Problem 4: Markdown Formatting</h3>
+                    
+                    <p class="text-sm font-semibold text-red-600 mb-2">You copy this:</p>
+                    <div class="bg-red-50 border-2 border-red-300 rounded-lg p-4 mb-4 font-mono text-sm text-red-700">
+                        This text has **bold words** and _italic words_ that show up as markdown.
+                    </div>
+
+                    <p class="text-sm font-semibold text-green-600 mb-2">You want:</p>
+                    <div class="bg-green-50 border-2 border-green-300 rounded-lg p-4 mb-4 font-mono text-sm text-green-700">
+                        This text has bold words and italic words that show up as markdown.
+                    </div>
+
+                    <p class="text-gray-700 mb-3 leading-relaxed"><strong>What causes it:</strong> ChatGPT uses markdown to format text in its interface. When you copy, the markdown syntax comes along.</p>
+
+                    <p class="text-gray-700 leading-relaxed"><strong>The fix:</strong> CopyCleaner strips markdown formatting like **bold**, _italic_, and other syntax.</p>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl p-8 my-12 text-center shadow-xl">
+                <h3 class="text-2xl font-bold mb-3">Stop Fixing AI Text Manually</h3>
+                <p class="text-lg mb-6 opacity-95">Clean ChatGPT formatting in 5 seconds. No more broken text.</p>
+                <a href="/" class="inline-block bg-white text-indigo-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-all text-lg shadow-lg hover:shadow-xl transform hover:scale-105">
+                    Try CopyCleaner Now →
+                </a>
+            </div>
+
+            <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Why "Paste Without Formatting" Doesn't Work</h2>
+
+            <p class="text-gray-700 leading-relaxed mb-6">
+                You've probably tried the classic workaround: Cmd+Shift+V (Mac) or Ctrl+Shift+V (Windows).
+            </p>
+
+            <div class="bg-white border-2 border-gray-200 rounded-xl p-6 shadow-sm mb-6">
+                <p class="font-semibold text-gray-900 mb-3">It does this:</p>
+                <ul class="space-y-2 text-gray-700 ml-6">
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-500 font-bold mt-1">✓</span>
+                        <span>Removes bold, italics, and fonts</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-500 font-bold mt-1">✓</span>
+                        <span>Strips color and highlighting</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-white border-2 border-red-200 rounded-xl p-6 shadow-sm mb-8">
+                <p class="font-semibold text-gray-900 mb-3">But it doesn't fix:</p>
+                <ul class="space-y-2 text-gray-700 ml-6">
+                    <li class="flex items-start gap-2">
+                        <span class="text-red-500 font-bold mt-1">✗</span>
+                        <span>Extra spaces between words</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-red-500 font-bold mt-1">✗</span>
+                        <span>Broken line breaks mid-sentence</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-red-500 font-bold mt-1">✗</span>
+                        <span>Smart quotes and special characters</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-red-500 font-bold mt-1">✗</span>
+                        <span>Markdown syntax like ** and _</span>
+                    </li>
+                </ul>
+            </div>
+
+            <p class="text-gray-700 leading-relaxed mb-6">
+                These are the same <a href="/blog/remove-extra-spaces" class="text-indigo-600 hover:underline">spacing and whitespace issues</a> that plague text from many sources. So you end up manually cleaning it anyway.
+            </p>
+
+            <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">The Fast Way: CopyCleaner</h2>
+
+            <p class="text-gray-700 leading-relaxed mb-6">
+                Here's how to clean ChatGPT text in 5 seconds:
+            </p>
+
+            <div class="bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200 rounded-xl p-6 mb-8 shadow-md">
+                <ol class="space-y-3 text-gray-700">
+                    <li class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold">1</span>
+                        <span class="pt-1">Copy your text from ChatGPT (or any AI tool)</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold">2</span>
+                        <span class="pt-1">Go to <a href="/" class="text-indigo-600 font-semibold hover:underline">CopyCleaner.co</a></span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold">3</span>
+                        <span class="pt-1">Paste it into the input box</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold">4</span>
+                        <span class="pt-1">Click "Clean My Text"</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="flex-shrink-0 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold">5</span>
+                        <span class="pt-1">Copy the cleaned result</span>
+                    </li>
+                </ol>
+            </div>
+
+            <p class="text-gray-700 leading-relaxed mb-4">Done. Your text now has:</p>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-8">
+                <div class="bg-green-50 border-2 border-green-200 rounded-lg p-4">
+                    <p class="flex items-center gap-2 text-gray-700">
+                        <span class="text-green-600 font-bold text-xl">✓</span>
+                        Single spaces (no doubles)
+                    </p>
+                </div>
+                <div class="bg-green-50 border-2 border-green-200 rounded-lg p-4">
+                    <p class="flex items-center gap-2 text-gray-700">
+                        <span class="text-green-600 font-bold text-xl">✓</span>
+                        Proper line breaks
+                    </p>
+                </div>
+                <div class="bg-green-50 border-2 border-green-200 rounded-lg p-4">
+                    <p class="flex items-center gap-2 text-gray-700">
+                        <span class="text-green-600 font-bold text-xl">✓</span>
+                        Regular quotes
+                    </p>
+                </div>
+                <div class="bg-green-50 border-2 border-green-200 rounded-lg p-4">
+                    <p class="flex items-center gap-2 text-gray-700">
+                        <span class="text-green-600 font-bold text-xl">✓</span>
+                        No markdown syntax
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="text-3xl font-bold text-gray-900 mt-12 mb-6">Questions You Actually Have</h2>
+
+            <div class="space-y-4 mb-12">
+                <div class="bg-white border-2 border-gray-200 rounded-xl p-6 shadow-sm">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Does CopyCleaner store my text?</h3>
+                    <p class="text-gray-700">No. Everything runs in your browser. Nothing is uploaded or saved. Your text never leaves your device.</p>
+                </div>
+
+                <div class="bg-white border-2 border-gray-200 rounded-xl p-6 shadow-sm">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Can it handle large documents?</h3>
+                    <p class="text-gray-700">The free version handles up to 5,000 characters per clean. For larger documents, join the waitlist for the browser extension with unlimited cleaning.</p>
+                </div>
+
+                <div class="bg-white border-2 border-gray-200 rounded-xl p-6 shadow-sm">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Does it work with Claude, Gemini, and other AI tools?</h3>
+                    <p class="text-gray-700">Yes. It works with ChatGPT, Claude, Gemini, Jasper, Copy.ai, and any tool that outputs plain or markdown text.</p>
+                </div>
+
+                <div class="bg-white border-2 border-gray-200 rounded-xl p-6 shadow-sm">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Will cleaning remove the quality of AI writing?</h3>
+                    <p class="text-gray-700">No. Cleaning only fixes formatting issues. The actual words, structure, and meaning stay exactly the same.</p>
+                </div>
+
+                <div class="bg-white border-2 border-gray-200 rounded-xl p-6 shadow-sm">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Can I clean code generated by ChatGPT?</h3>
+                    <p class="text-gray-700">Yes. CopyCleaner removes extra spaces and converts smart quotes to straight quotes, which is exactly what you want for code. Just review the output to make sure spacing is correct for your language (Python indentation, etc.).</p>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl p-8 text-center my-12 shadow-2xl">
+                <h3 class="text-3xl font-bold mb-4">Make AI Text Look Professional</h3>
+                <p class="text-xl mb-6 opacity-95">Clean messy ChatGPT output in 5 seconds. No more broken formatting.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-all text-lg inline-block shadow-lg hover:shadow-xl transform hover:scale-105">
+                        Try CopyCleaner Free
+                    </a>
+                </div>
+                <p class="mt-4 text-sm opacity-80">No signup • 3 free uses per day • Privacy-first</p>
+            </div>
+
+        </div>
+
+        <div class="border-t-2 border-gray-200 pt-8 mt-12">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Related Articles</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <a href="/blog/pdf-text-formatting" class="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-indigo-300 hover:shadow-lg transition-all">
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">How to Remove Formatting from PDF Text</h4>
+                    <p class="text-gray-600 text-sm">Fix broken line breaks, extra spaces, and hyphenation issues from PDF documents.</p>
+                </a>
+                <a href="/blog/clean-email-formatting" class="bg-white border-2 border-gray-200 rounded-xl p-6 hover:border-indigo-300 hover:shadow-lg transition-all">
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">How to Fix Email Reply Formatting</h4>
+                    <p class="text-gray-600 text-sm">Remove reply chains, quoted text, and signatures from messy email threads.</p>
+                </a>
+            </div>
+        </div>
+
+    </article>
+
+    <footer class="border-t bg-white py-8 mt-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-center gap-4 mb-6">
+                <a href="https://x.com/copycleaner_co" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-indigo-600 transition-colors" aria-label="Twitter/X">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/copycleaner.co" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-indigo-600 transition-colors" aria-label="Instagram">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                    </svg>
+                </a>
+                <a href="https://www.tiktok.com/@copycleaner.co" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-indigo-600 transition-colors" aria-label="TikTok">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"></path>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/company/copycleaner-co/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-indigo-600 transition-colors" aria-label="LinkedIn">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                    </svg>
+                </a>
+            </div>
+            
+            <p class="text-center text-gray-600 text-sm mb-4">© 2025 CopyCleaner.co • Your text never leaves your browser</p>
+            <div class="flex justify-center gap-6 flex-wrap text-sm mb-4">
+                <a href="/" class="text-gray-600 hover:text-gray-900">Home</a>
+                <a href="/about" class="text-gray-600 hover:text-gray-900">About</a>
+                <a href="/blog" class="text-gray-600 hover:text-gray-900">Blog</a>
+                <a href="/terms" class="text-gray-600 hover:text-gray-900">Terms of Service</a>
+                <a href="/privacy" class="text-gray-600 hover:text-gray-900">Privacy Policy</a>
+                <a href="/refund" class="text-gray-600 hover:text-gray-900">Refund Policy</a>
+                <a href="mailto:hello@copycleaner.co" class="text-gray-600 hover:text-gray-900">Contact</a>
+            </div>
+
+    </footer>
+</body>
+</html>
